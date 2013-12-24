@@ -1,3 +1,9 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.6pexip1) pexip; urgency=low
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 24 Dec 2013 22:28:23 +0000
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.6) precise-security; urgency=low
 
   * SECURITY REGRESSION: regression with lxml (LP: #1201849)

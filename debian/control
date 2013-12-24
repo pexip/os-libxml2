@@ -1,14 +1,16 @@
 Source: libxml2
 Priority: optional
 Section: libs
-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Maintainer: Pexip AS <packaging@pexip.com>
+XSBC-Pexip-Original-Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
-Uploaders: Mike Hommey <glandium@debian.org>
+XSBC-Pexip-Original-Uploaders: Mike Hommey <glandium@debian.org>
 Standards-Version: 3.9.2.0
 Build-Depends: debhelper (>= 8.1.3), zlib1g-dev | libz-dev, python-all-dev (>= 2.6.6-3~), python-all-dbg, autotools-dev, libreadline-dev | libreadline5-dev, binutils (>= 2.14.90.0.7), perl
 Homepage: http://xmlsoft.org/
 Vcs-Git: git://git.debian.org/debian-xml-sgml/libxml2.git
 Vcs-Browser: http://git.debian.org/?p=debian-xml-sgml/libxml2.git
+XS-Pexip-Upstream: http://archive.ubuntu.com/ubuntu/ precise
 
 Package: libxml2
 Priority: standard
