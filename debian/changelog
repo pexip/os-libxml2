@@ -1,3 +1,12 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.7) precise-security; urgency=medium
+
+  * SECURITY UPDATE: resource exhaustion via external parameter entities
+    - parser.c: do not fetch external parameter entities.
+    - https://git.gnome.org/browse/libxml2/commit/?id=9cd1c3cfbd32655d60572c0a413e017260c854df
+    - CVE-2014-0191
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 08 May 2014 14:30:38 -0400
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.6) precise-security; urgency=low
 
   * SECURITY REGRESSION: regression with lxml (LP: #1201849)
