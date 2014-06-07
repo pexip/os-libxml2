@@ -1,8 +1,17 @@
-libxml2 (2.7.8.dfsg-5.1ubuntu4.6pexip1) pexip; urgency=low
+libxml2 (2.7.8.dfsg-5.1ubuntu4.7pexip1) pexip; urgency=low
 
   * Prepare Pexip packaging
 
- -- John-Mark Bell <jmb@pexip.com>  Tue, 24 Dec 2013 22:28:23 +0000
+ -- John-Mark Bell <jmb@pexip.com>  Sat, 07 Jun 2014 15:11:43 +0100
+
+libxml2 (2.7.8.dfsg-5.1ubuntu4.7) precise-security; urgency=medium
+
+  * SECURITY UPDATE: resource exhaustion via external parameter entities
+    - parser.c: do not fetch external parameter entities.
+    - https://git.gnome.org/browse/libxml2/commit/?id=9cd1c3cfbd32655d60572c0a413e017260c854df
+    - CVE-2014-0191
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 08 May 2014 14:30:38 -0400
 
 libxml2 (2.7.8.dfsg-5.1ubuntu4.6) precise-security; urgency=low
 
