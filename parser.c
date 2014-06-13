@@ -2558,7 +2558,7 @@ xmlParserHandlePEReference(xmlParserCtxtPtr ctxt) {
 
 		    /*
 		     * Note: external parameter entities will not be loaded, it
-		     * isnot required for a non-validating parser, unless the
+		     * is not required for a non-validating parser, unless the
 		     * option of validating, or substituting entities were
 		     * given. Doing so is far more secure as the parser will
 		     * only process data coming from the document entity by
@@ -2568,6 +2568,8 @@ xmlParserHandlePEReference(xmlParserCtxtPtr ctxt) {
 		        ((ctxt->options & XML_PARSE_NOENT) == 0) &&
 			((ctxt->options & XML_PARSE_DTDVALID) == 0) &&
 			((ctxt->options & XML_PARSE_DTDLOAD) == 0) &&
+			((ctxt->options & XML_PARSE_DTDATTR) == 0) &&
+			(ctxt->replaceEntities == 0) &&
 			(ctxt->validate == 0))
 			return;
 
@@ -12256,6 +12258,9 @@ xmlIOParseDTD(xmlSAXHandlerPtr sax, xmlParserInputBufferPtr input,
 	return(NULL);
     }
 
+    /* We are loading a DTD */
+    ctxt->options |= XML_PARSE_DTDLOAD;
+
     /*
      * Set-up the SAX context
      */
@@ -12384,7 +12389,7 @@ xmlSAXParseDTD(xmlSAXHandlerPtr sax, const xmlChar *ExternalID,
     }
 
     /* We are loading a DTD */
-    ctxt->options = XML_PARSE_DTDLOAD;
+    ctxt->options |= XML_PARSE_DTDLOAD;
 
     /*
      * Set-up the SAX context

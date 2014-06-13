@@ -1,3 +1,12 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.9) precise-security; urgency=medium
+
+  * SECURITY REGRESSION: more xmllint regressions (LP: #1321869)
+    - use upstream commit which includes additional regression fixes to
+      parser.c.
+    - https://git.gnome.org/browse/libxml2/commit/?id=dd8367da17c2948981a51e52c8a6beb445edf825
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 13 Jun 2014 09:11:38 -0400
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.8) precise-security; urgency=medium
 
   * SECURITY REGRESSION: xmllint no longer loads entities with --postvalid
