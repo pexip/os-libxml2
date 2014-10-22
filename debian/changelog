@@ -1,3 +1,15 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.11) precise-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service via entity expansion
+    - parser.c, SAX2.c, include/libxml/entities.h: refactor entity checking
+      and add additional tests.
+    - https://git.gnome.org/browse/libxml2/commit/?id=a3f1e3e5712257fd279917a9158278534e8f4b72
+    - https://git.gnome.org/browse/libxml2/commit/?id=cff2546f13503ac028e4c1f63c7b6d85f2f2d777
+    - https://git.gnome.org/browse/libxml2/commit/?id=be2a7edaf289c5da74a4f9ed3a0b6c733e775230
+    - CVE-2014-3660
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 22 Oct 2014 12:16:42 -0400
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.9) precise-security; urgency=medium
 
   * SECURITY REGRESSION: more xmllint regressions (LP: #1321869)
