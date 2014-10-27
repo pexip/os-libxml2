@@ -574,6 +574,7 @@ xmlSAX2GetEntity(void *ctx, const xmlChar *name)
 	 * parse the external entity
 	 */
 	xmlNodePtr children;
+	unsigned long oldnbent = ctxt->nbentities;
 
         val = xmlParseCtxtExternalEntity(ctxt, ret->URI,
 		                         ret->ExternalID, &children);
@@ -586,8 +587,11 @@ xmlSAX2GetEntity(void *ctx, const xmlChar *name)
 	    return(NULL);
 	}
 	ret->owner = 1;
-	if (ret->checked == 0)
-	    ret->checked = 1;
+	if (ret->checked == 0) {
+	    ret->checked = (ctxt->nbentities - oldnbent + 1) * 2;
+	    if ((ret->content != NULL) && (xmlStrchr(ret->content, '<')))
+	        ret->checked |= 1;
+	}
     }
     return(ret);
 }
