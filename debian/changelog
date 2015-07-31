@@ -1,3 +1,12 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.11pexip2) pexip; urgency=low
+
+  * SECURITY UPDATE: denial of service in xml reader
+    - include/libxml/tree.h, tree.c, xmlreader.c: enforce the reader to run in constant memory
+    - https://git.gnome.org/browse/libxml2/commit/?id=213f1fe0d76d30eaed6e5853057defc43e6df2c9
+    - rebased against libxml2 (<< 2.9) -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de> 
+
+ -- John-Mark Bell <jmb@pexip.com>  Fri, 31 Jul 2015 02:11:42 +0100
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.11pexip1) pexip; urgency=low
 
   * New upstream release
