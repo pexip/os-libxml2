@@ -1,3 +1,23 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.12) precise-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service via XEE attack
+    - include/libxml/tree.h, tree.c, xmlreader.c: enforce the reader to run
+      in constant memory.
+    - patch obtained from Debian's 2.7.8.dfsg-2+squeeze12 package.
+    - CVE-2015-1819
+  * SECURITY UPDATE: denial of service via out-of-bounds read
+    - parser.c: stop parsing on entities boundaries errors.
+    - https://git.gnome.org/browse/libxml2/commit/?id=a7dfab7411cbf545f359dd3157e5df1eb0e7ce31
+    - https://git.gnome.org/browse/libxml2/commit/?id=9b8512337d14c8ddf662fcb98b0135f225a1c489
+    - CVE-2015-7941
+  * SECURITY UPDATE: overflow in conditional sections
+    - parser.c: properly check input.
+    - https://git.gnome.org/browse/libxml2/commit/?id=bd0526e66a56e75a18da8c15c4750db8f801c52d
+    - https://git.gnome.org/browse/libxml2/commit/?id=41ac9049a27f52e7a1f3b341f8714149fc88d450
+    - CVE-2015-7942
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 13 Nov 2015 09:28:57 -0500
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.11) precise-security; urgency=medium
 
   * SECURITY UPDATE: denial of service via entity expansion
