@@ -1,6 +1,10 @@
 libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
+  * SECURITY UPDATE: Buffer overread with XML parser in xmlNextChar
+    - parser.c: Avoid extra processing of MarkupDecl when EOF
+    - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
+    - CVE-2015-8241
 
  -- John-Mark Bell <jmb@pexip.com>  Mon, 16 Nov 2015 23:54:12 +0000
 
