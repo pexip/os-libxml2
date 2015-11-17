@@ -5483,6 +5483,7 @@ xmlParseEntityDecl(xmlParserCtxtPtr ctxt) {
 	if (RAW != '>') {
 	    xmlFatalErrMsgStr(ctxt, XML_ERR_ENTITY_NOT_FINISHED,
 	            "xmlParseEntityDecl: entity %s not terminated\n", name);
+	    xmlStopParser(ctxt);
 	} else {
 	    if (input != ctxt->input) {
 		xmlFatalErrMsg(ctxt, XML_ERR_ENTITY_BOUNDARY,
@@ -6594,6 +6595,8 @@ xmlParseConditionalSections(xmlParserCtxtPtr ctxt) {
 	SKIP_BLANKS;
 	if (RAW != '[') {
 	    xmlFatalErr(ctxt, XML_ERR_CONDSEC_INVALID, NULL);
+	    xmlStopParser(ctxt);
+	    return;
 	} else {
 	    if (ctxt->input->id != id) {
 		xmlValidityError(ctxt, XML_ERR_ENTITY_BOUNDARY,
@@ -6654,6 +6657,8 @@ xmlParseConditionalSections(xmlParserCtxtPtr ctxt) {
 	SKIP_BLANKS;
 	if (RAW != '[') {
 	    xmlFatalErr(ctxt, XML_ERR_CONDSEC_INVALID, NULL);
+	    xmlStopParser(ctxt);
+	    return;
 	} else {
 	    if (ctxt->input->id != id) {
 		xmlValidityError(ctxt, XML_ERR_ENTITY_BOUNDARY,
@@ -6709,6 +6714,8 @@ xmlParseConditionalSections(xmlParserCtxtPtr ctxt) {
 
     } else {
 	xmlFatalErr(ctxt, XML_ERR_CONDSEC_INVALID_KEYWORD, NULL);
+	xmlStopParser(ctxt);
+	return;
     }
 
     if (RAW == 0)
@@ -6722,7 +6729,9 @@ xmlParseConditionalSections(xmlParserCtxtPtr ctxt) {
 	"All markup of the conditional section is not in the same entity\n",
 				 NULL, NULL);
 	}
-        SKIP(3);
+	if ((ctxt-> instate != XML_PARSER_EOF) &&
+	    ((ctxt->input->cur + 3) <= ctxt->input->end))
+	    SKIP(3);
     }
 }
 
