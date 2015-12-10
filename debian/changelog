@@ -1,6 +1,10 @@
 libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
+  * SECURITY UPDATE: denial of service via out-of-bounds read
+    - dict.c: add test for negative buffer index
+    - https://git.gnome.org/browse/libxml2/commit/?id=6360a31a84efe69d155ed96306b9a931a40beab9
+    - CVE-2015-7497
   * SECURITY UPDATE: unpredictable behaviour after switching encoding
     - parser.c, parserInternals.c: stop processing entities after encoding conversion failures
     - https://git.gnome.org/browse/libxml2/commit/?id=afd27c21f6b36e22682b7da20d726bce2dcb2f43
