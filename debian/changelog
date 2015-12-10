@@ -6,6 +6,10 @@ libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
     - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
     - CVE-2015-8241
   * SECURITY UPDATE: denial of service via out-of-bounds read
+    - HTMLparser.c: pass correct pointer to SAX callbacks
+    - https://git.gnome.org/browse/libxml2/commit/?id=8fb4a770075628d6441fb17a1e435100e2f3b1a2
+    - CVE-2015-8242
+  * SECURITY UPDATE: denial of service via out-of-bounds read
     - parser.c: exit early on errors
     - https://git.gnome.org/browse/libxml2/commit/?id=9aa37588ee78a06ca1379a9d9356eab16686099c
     - https://git.gnome.org/browse/libxml2/commit/?id=709a952110e98621c9b78c4f26462a9d8333102e
