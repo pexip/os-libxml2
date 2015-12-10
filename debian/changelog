@@ -1,6 +1,10 @@
 libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
+  * SECURITY UPDATE: unpredictable behaviour after switching encoding
+    - parser.c, parserInternals.c: stop processing entities after encoding conversion failures
+    - https://git.gnome.org/browse/libxml2/commit/?id=afd27c21f6b36e22682b7da20d726bce2dcb2f43
+    - CVE-2015-7498
   * SECURITY UPDATE: out-of-bounds read after input buffer grows
     - parser.c: halt parser if buffer becomes inconsistent
     - https://git.gnome.org/browse/libxml2/commit/?id=28cd9cb747a94483f4aea7f0968d202c20bb4cfc
