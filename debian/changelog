@@ -2,6 +2,10 @@ libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
   * SECURITY UPDATE: denial of service via out-of-bounds read
+    - parser.c: stop parsing on entity expansion failure
+    - https://git.gnome.org/browse/libxml2/commit/?id=69030714cde66d525a8884bda01b9e8f0abf8e1e
+    - CVE-2015-5312
+  * SECURITY UPDATE: denial of service via out-of-bounds read
     - dict.c: add test for negative buffer index
     - https://git.gnome.org/browse/libxml2/commit/?id=6360a31a84efe69d155ed96306b9a931a40beab9
     - CVE-2015-7497
