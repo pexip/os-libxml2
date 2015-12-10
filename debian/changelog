@@ -1,6 +1,11 @@
 libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
+  * SECURITY UPDATE: out-of-bounds read after input buffer grows
+    - parser.c: halt parser if buffer becomes inconsistent
+    - https://git.gnome.org/browse/libxml2/commit/?id=28cd9cb747a94483f4aea7f0968d202c20bb4cfc
+    - https://git.gnome.org/browse/libxml2/commit/?id=35bcb1d758ed70aa7b257c9c3b3ff55e54e3d0da
+    - CVE-2015-7499
   * SECURITY UPDATE: Buffer overread with XML parser in xmlNextChar
     - parser.c: Avoid extra processing of MarkupDecl when EOF
     - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
