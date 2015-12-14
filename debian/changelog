@@ -1,3 +1,50 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.13pexip1) pexip; urgency=low
+
+  * New upstream release
+
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 14 Dec 2015 16:38:46 +0000
+
+libxml2 (2.7.8.dfsg-5.1ubuntu4.13) precise-security; urgency=medium
+
+  * SECURITY UPDATE: denial of service via entity expansion issue
+    - parser.c: properly exit when entity expansion is detected.
+    - https://git.gnome.org/browse/libxml2/commit/?id=69030714cde66d525a8884bda01b9e8f0abf8e1e
+    - CVE-2015-5312
+  * SECURITY UPDATE: heap buffer overflow in xmlDictComputeFastQKey
+    - dict.c: check offset.
+    - https://git.gnome.org/browse/libxml2/commit/?id=6360a31a84efe69d155ed96306b9a931a40beab9
+    - CVE-2015-7497
+  * SECURITY UPDATE: denial of service via encoding conversion failures
+    - parser.c: avoid processing entities after encoding conversion
+      failures.
+    - https://git.gnome.org/browse/libxml2/commit/?id=afd27c21f6b36e22682b7da20d726bce2dcb2f43
+    - CVE-2015-7498
+  * SECURITY UPDATE: out of bounds read in xmlGROW
+    - parser.c: add xmlHaltParser() to stop the parser and check input.
+    - https://git.gnome.org/browse/libxml2/commit/?id=28cd9cb747a94483f4aea7f0968d202c20bb4cfc
+    - https://git.gnome.org/browse/libxml2/commit/?id=35bcb1d758ed70aa7b257c9c3b3ff55e54e3d0da
+    - CVE-2015-7499
+  * SECURITY UPDATE: out of bounds read in xmlParseMisc
+    - parser.c: check entity boundaries.
+    - https://git.gnome.org/browse/libxml2/commit/?id=f1063fdbe7fa66332bbb76874101c2a7b51b519f
+    - CVE-2015-7500
+  * SECURITY UPDATE: denial of service via extra processing of MarkupDecl
+    - parser.c: add extra EOF check.
+    - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
+    - CVE-2015-8241
+  * SECURITY UPDATE: buffer overead with HTML parser in push mode
+    - HTMLparser.c: use pointer in the input in.
+    - https://git.gnome.org/browse/libxml2/commit/?id=8fb4a770075628d6441fb17a1e435100e2f3b1a2
+    - CVE-2015-8242
+  * SECURITY UPDATE: denial of service via encoding failures
+    - parser.c: do not process encoding values if the declaration is broken
+      and fail parsing if the encoding conversion failed.
+    - https://git.gnome.org/browse/libxml2/commit/?id=9aa37588ee78a06ca1379a9d9356eab16686099c
+    - https://git.gnome.org/browse/libxml2/commit/?id=709a952110e98621c9b78c4f26462a9d8333102e
+    - CVE-2015-8317
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 09 Dec 2015 12:35:41 -0500
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
 
   * New upstream release
