@@ -1,3 +1,21 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.14) precise-security; urgency=medium
+
+  * SECURITY UPDATE: incomplete fix for out of bounds read in xmlGROW
+    (LP: #1525996)
+    - add extra commits to this previously-fixed CVE
+    - parser.c: reuse xmlHaltParser() where it makes sense.
+    - e3b1597421ad7cbeb5939fc3b54f43f141c82366
+    - error.c: do not print error context when there is none.
+    - ce0b0d0d81fdbb5f722a890432b52d363e4de57b
+    - CVE-2015-7499
+  * SECURITY UPDATE: out of bounds memory access via unclosed html comment
+    - HTMLparser.c: fix parsing short unclosed comment uninitialized
+      access.
+    - e724879d964d774df9b7969fc846605aa1bac54c
+    - CVE-2015-8710
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 14 Jan 2016 13:16:09 -0500
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.13) precise-security; urgency=medium
 
   * SECURITY UPDATE: denial of service via entity expansion issue
