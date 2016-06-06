@@ -1,3 +1,76 @@
+libxml2 (2.7.8.dfsg-5.1ubuntu4.15pexip1) pexip; urgency=low
+
+  * New upstream release
+
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 06 Jun 2016 18:55:37 +0100
+
+libxml2 (2.7.8.dfsg-5.1ubuntu4.15) precise-security; urgency=medium
+
+  * SECURITY UPDATE: heap-based buffer overread in xmlNextChar
+    - return after error in parser.c.
+    - a7a94612aa3b16779e2c74e1fa353b5d9786c602
+    - CVE-2016-1762
+  * SECURITY UPDATE: heap-based buffer overread in htmlCurrentChar
+    - clear up NULL deref, handle 0-length entities and fix tests in
+      parserInternals.c.
+    - ff76eb28c75451bc56e3b93f44dac155ca29e7f5
+    - fdfeecc1b73b0318466f0d61f0b8881ed9d92dd2
+    - 0bcd05c5cd83dec3406c8f68b769b1d610c72f76
+    - CVE-2016-1833
+  * SECURITY UPDATE: heap-buffer-overflow in xmlStrncat
+    - check for negative lengths in xmlstring.c.
+    - 8fbbf5513d609c1770b391b99e33314cd0742704
+    - CVE-2016-1834
+  * SECURITY UPDATE: heap use-after-free in xmlSAX2AttributeNs
+    - add check to parser.c, add tests to result/errors/759020.xml.err,
+      result/errors/759020.xml.str, test/errors/759020.xml.
+    - 38eae571111db3b43ffdeb05487c9f60551906fb
+    - CVE-2016-1835
+  * SECURITY UPDATE: heap use-after-free in htmlParsePubidLiteral and
+    htmlParseSystemiteral
+    - prevent stable pointer usage in HTMLparser.c.
+    - 11ed4a7a90d5ce156a18980a4ad4e53e77384852
+    - CVE-2016-1837
+  * SECURITY UPDATE: heap-based buffer overread in
+    xmlParserPrintFileContextInternal
+    - add bounds check to parser.c,
+      add tests to result/errors/758588.xml.err,
+      result/errors/758588.xml.str, test/errors/758588.xml.
+    - db07dd613e461df93dde7902c6505629bf0734e9
+    - CVE-2016-1838
+  * SECURITY UPDATE: heap-based buffer overread in xmlDictAddString
+    - add bounds check to HTMLparser.c.
+    - a820dbeac29d330bae4be05d9ecd939ad6b4aa33
+    - CVE-2015-8806
+    - CVE-2016-1839
+    - CVE-2016-2073
+  * SECURITY UPDATE: heap-buffer-overflow in xmlFAParsePosCharGroup
+    - properly handle error in xmlregexp.c.
+    - cbb271655cadeb8dbb258a64701d9a3a0c4835b4
+    - CVE-2016-1840
+  * SECURITY UPDATE: avoid building recursive entities
+    - properly handle recursion in parser.c, tree.c.
+    - bdd66182ef53fe1f7209ab6535fda56366bd7ac9
+    - CVE-2016-3627
+  * SECURITY UPDATE: recursion depth counter issue
+    - properly could recursion depth in parser.c.
+    - 8f30bdff69edac9075f4663ce3b56b0c52d48ce6
+    - CVE-2016-3705
+  * SECURITY UPDATE: heap-based buffer-underreads due to xmlParseName
+    - improve error handling in parser.c.
+    - 00906759053986b8079985644172085f74331f83
+    - CVE-2016-4447
+  * SECURITY UPDATE: inappropriate fetch of entities content
+    - fix another external entity fetch in parser.c.
+    - b1d34de46a11323fccffa9fadeb33be670d602f5
+    - CVE-2016-4449
+  * SECURITY UPDATE: out of bound access when serializing malformed strings
+    - improve string handling in xmlsave.c.
+    - c97750d11bb8b6f3303e7131fe526a61ac65bcfd
+    - CVE-2016-4483
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 03 Jun 2016 09:11:38 -0400
+
 libxml2 (2.7.8.dfsg-5.1ubuntu4.14pexip1) pexip; urgency=low
 
   * New upstream release

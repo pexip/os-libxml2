@@ -1569,6 +1569,7 @@ xmlStringGetNodeList(xmlDocPtr doc, const xmlChar *value) {
 			else if ((ent != NULL) && (ent->children == NULL)) {
 			    xmlNodePtr temp;
 
+			    ent->children = (xmlNodePtr) -1;
 			    ent->children = xmlStringGetNodeList(doc,
 				    (const xmlChar*)node->content);
 			    ent->owner = 1;
