@@ -1,371 +1,300 @@
-libxml2 (2.7.8.dfsg-5.1ubuntu4.15pexip1) pexip; urgency=low
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 06 Jun 2016 18:55:37 +0100
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.15) precise-security; urgency=medium
-
-  * SECURITY UPDATE: heap-based buffer overread in xmlNextChar
-    - return after error in parser.c.
-    - a7a94612aa3b16779e2c74e1fa353b5d9786c602
-    - CVE-2016-1762
-  * SECURITY UPDATE: heap-based buffer overread in htmlCurrentChar
-    - clear up NULL deref, handle 0-length entities and fix tests in
-      parserInternals.c.
-    - ff76eb28c75451bc56e3b93f44dac155ca29e7f5
-    - fdfeecc1b73b0318466f0d61f0b8881ed9d92dd2
-    - 0bcd05c5cd83dec3406c8f68b769b1d610c72f76
-    - CVE-2016-1833
-  * SECURITY UPDATE: heap-buffer-overflow in xmlStrncat
-    - check for negative lengths in xmlstring.c.
-    - 8fbbf5513d609c1770b391b99e33314cd0742704
-    - CVE-2016-1834
-  * SECURITY UPDATE: heap use-after-free in xmlSAX2AttributeNs
-    - add check to parser.c, add tests to result/errors/759020.xml.err,
-      result/errors/759020.xml.str, test/errors/759020.xml.
-    - 38eae571111db3b43ffdeb05487c9f60551906fb
-    - CVE-2016-1835
-  * SECURITY UPDATE: heap use-after-free in htmlParsePubidLiteral and
-    htmlParseSystemiteral
-    - prevent stable pointer usage in HTMLparser.c.
-    - 11ed4a7a90d5ce156a18980a4ad4e53e77384852
-    - CVE-2016-1837
-  * SECURITY UPDATE: heap-based buffer overread in
-    xmlParserPrintFileContextInternal
-    - add bounds check to parser.c,
-      add tests to result/errors/758588.xml.err,
-      result/errors/758588.xml.str, test/errors/758588.xml.
-    - db07dd613e461df93dde7902c6505629bf0734e9
-    - CVE-2016-1838
-  * SECURITY UPDATE: heap-based buffer overread in xmlDictAddString
-    - add bounds check to HTMLparser.c.
-    - a820dbeac29d330bae4be05d9ecd939ad6b4aa33
-    - CVE-2015-8806
-    - CVE-2016-1839
-    - CVE-2016-2073
-  * SECURITY UPDATE: heap-buffer-overflow in xmlFAParsePosCharGroup
-    - properly handle error in xmlregexp.c.
-    - cbb271655cadeb8dbb258a64701d9a3a0c4835b4
-    - CVE-2016-1840
-  * SECURITY UPDATE: avoid building recursive entities
-    - properly handle recursion in parser.c, tree.c.
-    - bdd66182ef53fe1f7209ab6535fda56366bd7ac9
-    - CVE-2016-3627
-  * SECURITY UPDATE: recursion depth counter issue
-    - properly could recursion depth in parser.c.
-    - 8f30bdff69edac9075f4663ce3b56b0c52d48ce6
-    - CVE-2016-3705
-  * SECURITY UPDATE: heap-based buffer-underreads due to xmlParseName
-    - improve error handling in parser.c.
-    - 00906759053986b8079985644172085f74331f83
-    - CVE-2016-4447
-  * SECURITY UPDATE: inappropriate fetch of entities content
-    - fix another external entity fetch in parser.c.
-    - b1d34de46a11323fccffa9fadeb33be670d602f5
-    - CVE-2016-4449
-  * SECURITY UPDATE: out of bound access when serializing malformed strings
-    - improve string handling in xmlsave.c.
-    - c97750d11bb8b6f3303e7131fe526a61ac65bcfd
-    - CVE-2016-4483
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 03 Jun 2016 09:11:38 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.14pexip1) pexip; urgency=low
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 25 Jan 2016 09:28:53 +0000
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.14) precise-security; urgency=medium
-
-  * SECURITY UPDATE: incomplete fix for out of bounds read in xmlGROW
-    (LP: #1525996)
-    - add extra commits to this previously-fixed CVE
-    - parser.c: reuse xmlHaltParser() where it makes sense.
-    - e3b1597421ad7cbeb5939fc3b54f43f141c82366
-    - error.c: do not print error context when there is none.
-    - ce0b0d0d81fdbb5f722a890432b52d363e4de57b
-    - CVE-2015-7499
-  * SECURITY UPDATE: out of bounds memory access via unclosed html comment
-    - HTMLparser.c: fix parsing short unclosed comment uninitialized
-      access.
-    - e724879d964d774df9b7969fc846605aa1bac54c
-    - CVE-2015-8710
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 14 Jan 2016 13:16:09 -0500
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.13pexip1) pexip; urgency=low
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 14 Dec 2015 16:38:46 +0000
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.13) precise-security; urgency=medium
-
-  * SECURITY UPDATE: denial of service via entity expansion issue
-    - parser.c: properly exit when entity expansion is detected.
-    - https://git.gnome.org/browse/libxml2/commit/?id=69030714cde66d525a8884bda01b9e8f0abf8e1e
-    - CVE-2015-5312
-  * SECURITY UPDATE: heap buffer overflow in xmlDictComputeFastQKey
-    - dict.c: check offset.
-    - https://git.gnome.org/browse/libxml2/commit/?id=6360a31a84efe69d155ed96306b9a931a40beab9
-    - CVE-2015-7497
-  * SECURITY UPDATE: denial of service via encoding conversion failures
-    - parser.c: avoid processing entities after encoding conversion
-      failures.
-    - https://git.gnome.org/browse/libxml2/commit/?id=afd27c21f6b36e22682b7da20d726bce2dcb2f43
-    - CVE-2015-7498
-  * SECURITY UPDATE: out of bounds read in xmlGROW
-    - parser.c: add xmlHaltParser() to stop the parser and check input.
-    - https://git.gnome.org/browse/libxml2/commit/?id=28cd9cb747a94483f4aea7f0968d202c20bb4cfc
-    - https://git.gnome.org/browse/libxml2/commit/?id=35bcb1d758ed70aa7b257c9c3b3ff55e54e3d0da
-    - CVE-2015-7499
-  * SECURITY UPDATE: out of bounds read in xmlParseMisc
-    - parser.c: check entity boundaries.
-    - https://git.gnome.org/browse/libxml2/commit/?id=f1063fdbe7fa66332bbb76874101c2a7b51b519f
-    - CVE-2015-7500
-  * SECURITY UPDATE: denial of service via extra processing of MarkupDecl
-    - parser.c: add extra EOF check.
-    - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
-    - CVE-2015-8241
-  * SECURITY UPDATE: buffer overead with HTML parser in push mode
-    - HTMLparser.c: use pointer in the input in.
-    - https://git.gnome.org/browse/libxml2/commit/?id=8fb4a770075628d6441fb17a1e435100e2f3b1a2
-    - CVE-2015-8242
-  * SECURITY UPDATE: denial of service via encoding failures
-    - parser.c: do not process encoding values if the declaration is broken
-      and fail parsing if the encoding conversion failed.
-    - https://git.gnome.org/browse/libxml2/commit/?id=9aa37588ee78a06ca1379a9d9356eab16686099c
-    - https://git.gnome.org/browse/libxml2/commit/?id=709a952110e98621c9b78c4f26462a9d8333102e
-    - CVE-2015-8317
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 09 Dec 2015 12:35:41 -0500
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.12pexip1) pexip; urgency=low
-
-  * New upstream release
-  * SECURITY UPDATE: denial of service via out-of-bounds read
-    - parser.c: stop parsing on entity expansion failure
-    - https://git.gnome.org/browse/libxml2/commit/?id=69030714cde66d525a8884bda01b9e8f0abf8e1e
-    - CVE-2015-5312
-  * SECURITY UPDATE: denial of service via out-of-bounds read
-    - dict.c: add test for negative buffer index
-    - https://git.gnome.org/browse/libxml2/commit/?id=6360a31a84efe69d155ed96306b9a931a40beab9
-    - CVE-2015-7497
-  * SECURITY UPDATE: unpredictable behaviour after switching encoding
-    - parser.c, parserInternals.c: stop processing entities after encoding conversion failures
-    - https://git.gnome.org/browse/libxml2/commit/?id=afd27c21f6b36e22682b7da20d726bce2dcb2f43
-    - CVE-2015-7498
-  * SECURITY UPDATE: out-of-bounds read after input buffer grows
-    - parser.c: halt parser if buffer becomes inconsistent
-    - https://git.gnome.org/browse/libxml2/commit/?id=28cd9cb747a94483f4aea7f0968d202c20bb4cfc
-    - https://git.gnome.org/browse/libxml2/commit/?id=35bcb1d758ed70aa7b257c9c3b3ff55e54e3d0da
-    - CVE-2015-7499
-  * SECURITY UPDATE: Out-of-bounds read in entity processing
-    - parser.c: enhance buffer checks in entity handling
-    - https://git.gnome.org/browse/libxml2/commit/?id=f1063fdbe7fa66332bbb76874101c2a7b51b519f
-    - CVE-2015-7500
-  * SECURITY UPDATE: Buffer overread with XML parser in xmlNextChar
-    - parser.c: Avoid extra processing of MarkupDecl when EOF
-    - https://git.gnome.org/browse/libxml2/commit/?id=ab2b9a93ff19cedde7befbf2fcc48c6e352b6cbe
-    - CVE-2015-8241
-  * SECURITY UPDATE: denial of service via out-of-bounds read
-    - HTMLparser.c: pass correct pointer to SAX callbacks
-    - https://git.gnome.org/browse/libxml2/commit/?id=8fb4a770075628d6441fb17a1e435100e2f3b1a2
-    - CVE-2015-8242
-  * SECURITY UPDATE: denial of service via out-of-bounds read
-    - parser.c: exit early on errors
-    - https://git.gnome.org/browse/libxml2/commit/?id=9aa37588ee78a06ca1379a9d9356eab16686099c
-    - https://git.gnome.org/browse/libxml2/commit/?id=709a952110e98621c9b78c4f26462a9d8333102e
-    - CVE-2015-8317
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 16 Nov 2015 23:54:12 +0000
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.12) precise-security; urgency=medium
-
-  * SECURITY UPDATE: denial of service via XEE attack
-    - include/libxml/tree.h, tree.c, xmlreader.c: enforce the reader to run
-      in constant memory.
-    - patch obtained from Debian's 2.7.8.dfsg-2+squeeze12 package.
-    - CVE-2015-1819
-  * SECURITY UPDATE: denial of service via out-of-bounds read
-    - parser.c: stop parsing on entities boundaries errors.
-    - https://git.gnome.org/browse/libxml2/commit/?id=a7dfab7411cbf545f359dd3157e5df1eb0e7ce31
-    - https://git.gnome.org/browse/libxml2/commit/?id=9b8512337d14c8ddf662fcb98b0135f225a1c489
-    - CVE-2015-7941
-  * SECURITY UPDATE: overflow in conditional sections
-    - parser.c: properly check input.
-    - https://git.gnome.org/browse/libxml2/commit/?id=bd0526e66a56e75a18da8c15c4750db8f801c52d
-    - https://git.gnome.org/browse/libxml2/commit/?id=41ac9049a27f52e7a1f3b341f8714149fc88d450
-    - CVE-2015-7942
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 13 Nov 2015 09:28:57 -0500
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.11pexip2) pexip; urgency=low
-
-  * SECURITY UPDATE: denial of service in xml reader
-    - include/libxml/tree.h, tree.c, xmlreader.c: enforce the reader to run in constant memory
-    - https://git.gnome.org/browse/libxml2/commit/?id=213f1fe0d76d30eaed6e5853057defc43e6df2c9
-    - rebased against libxml2 (<< 2.9) -- Mike Gabriel <mike.gabriel@das-netzwerkteam.de> 
-
- -- John-Mark Bell <jmb@pexip.com>  Fri, 31 Jul 2015 02:11:42 +0100
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.11pexip1) pexip; urgency=low
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Mon, 27 Oct 2014 16:31:25 +0000
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.11) precise-security; urgency=medium
-
-  * SECURITY UPDATE: denial of service via entity expansion
-    - parser.c, SAX2.c, include/libxml/entities.h: refactor entity checking
-      and add additional tests.
-    - https://git.gnome.org/browse/libxml2/commit/?id=a3f1e3e5712257fd279917a9158278534e8f4b72
-    - https://git.gnome.org/browse/libxml2/commit/?id=cff2546f13503ac028e4c1f63c7b6d85f2f2d777
-    - https://git.gnome.org/browse/libxml2/commit/?id=be2a7edaf289c5da74a4f9ed3a0b6c733e775230
-    - CVE-2014-3660
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 22 Oct 2014 12:16:42 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.9pexip1) pexip; urgency=low
-
-  * New upstream release
-
- -- John-Mark Bell <jmb@pexip.com>  Tue, 17 Jun 2014 15:27:13 +0100
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.9) precise-security; urgency=medium
-
-  * SECURITY REGRESSION: more xmllint regressions (LP: #1321869)
-    - use upstream commit which includes additional regression fixes to
-      parser.c.
-    - https://git.gnome.org/browse/libxml2/commit/?id=dd8367da17c2948981a51e52c8a6beb445edf825
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 13 Jun 2014 09:11:38 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.8) precise-security; urgency=medium
-
-  * SECURITY REGRESSION: xmllint no longer loads entities with --postvalid
-    (LP: #1321869)
-    - Thanks to Alexey Neyman for proposed patch
-    - https://mail.gnome.org/archives/xml/2014-May/msg00003.html
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 06 Jun 2014 12:32:11 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.7) precise-security; urgency=medium
-
-  * SECURITY UPDATE: resource exhaustion via external parameter entities
-    - parser.c: do not fetch external parameter entities.
-    - https://git.gnome.org/browse/libxml2/commit/?id=9cd1c3cfbd32655d60572c0a413e017260c854df
-    - CVE-2014-0191
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 08 May 2014 14:30:38 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.6) precise-security; urgency=low
-
-  * SECURITY REGRESSION: regression with lxml (LP: #1201849)
-    - parser.c: revised to fix regression, and a couple of wrong return
-      values.
-    - CVE-2013-2877
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 16 Jul 2013 14:05:24 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.5) precise-security; urgency=low
-
-  * SECURITY UPDATE: external entity expansion attack (LP: #1194410)
-    - do not fetch external parsed entities in parser.c, added test to
-      test/errors/extparsedent.xml, result/errors/extparsedent.xml.
-    - https://git.gnome.org/browse/libxml2/commit/?id=4629ee02ac649c27f9c0cf98ba017c6b5526070f
-    - CVE-2013-0339
-  * SECURITY UPDATE: denial of service via incomplete document
-    - try to stop parsing as quickly as possible in parser.c,
-      include/libxml/xmlerror.h.
-    - https://git.gnome.org/browse/libxml2/commit/?id=48b4cdde3483e054af8ea02e0cd7ee467b0e9a50
-    - https://git.gnome.org/browse/libxml2/commit/?id=e50ba8164eee06461c73cd8abb9b46aa0be81869
-    - CVE-2013-2877
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Thu, 11 Jul 2013 14:57:48 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.4) precise-security; urgency=low
-
-  * SECURITY UPDATE: denial of service via entity expansion
-    - include/libxml/parser.h, parser.c, parserInternals.c: limit number of
-      entity expansions, thanks to Daniel Veillard.
-    - http://git.gnome.org/browse/libxml2/commit/?id=23f05e0c33987d6605387b300c4be5da2120a7ab
-    - CVE-2013-0338
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 26 Mar 2013 10:11:00 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.3) precise-security; urgency=low
-
-  * SECURITY UPDATE: buffer underflow in xmlParseAttValueComplex()
-    - debian/patches/CVE-2012-5134.patch: add array bounds checking in
-      parser.c, thanks to Daniel Veillard
-    - http://git.gnome.org/browse/libxml2/commit/?id=6a36fbe3b3e001a8a840b5c1fdd81cefc9947f0d
-    - CVE-2012-5134
-
- -- Seth Arnold <seth.arnold@canonical.com>  Tue, 04 Dec 2012 11:39:55 -0800
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.2) precise-security; urgency=low
-
-  * SECURITY UPDATE: denial of service and possible code execution via
-    incorrect buffer sizes.
-    - http://git.gnome.org/browse/libxml2/commit/?id=459eeb9dc752d5185f57ff6b135027f11981a626
-    - http://git.gnome.org/browse/libxml2/commit/?id=4f9fdc709c4861c390cd84e2ed1fd878b3442e28
-    - http://git.gnome.org/browse/libxml2/commit/?id=baaf03f80f817bb34c421421e6cb4d68c353ac9a
-    - CVE-2012-2807
-
- -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Wed, 26 Sep 2012 13:10:43 -0400
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4.1) precise-security; urgency=low
-
-  * SECURITY UPDATE: Fix an off by one pointer access in xpointer.c
-    - d8e1faeaa99c7a7c07af01c1c72de352eb590a3e
-    - CVE-2011-3102
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Fri, 18 May 2012 08:55:39 -0500
-
-libxml2 (2.7.8.dfsg-5.1ubuntu4) precise; urgency=low
-
-  * SECURITY UPDATE: add randomization to dictionaries with hash tables
-    help prevent denial of service via hash algorithm collision
-    - configure.in: lookup for rand, srand and time
-    - dict.c: add randomization to dictionaries hash tables
-    - hash.c: add randomization to normal hash tables
-    - 8973d58b7498fa5100a876815476b81fd1a2412a
-    - CVE-2012-0841
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Tue, 28 Feb 2012 07:20:11 -0600
-
-libxml2 (2.7.8.dfsg-5.1ubuntu3) precise; urgency=low
-
-  * various fixes for __xmlRaiseError (LP: #686363). This can be dropped in
-    2.7.8.dfsg-6
-    - 111d705c282e03e7202723c6c7e4499f8582bd4f
-    - 1b9128bae737fa559f5e2c191d6679a856efbad9
-    - 241d4a1069e6bedd0ee2295d7b43858109c1c6d1
-    - c2a0fdc4e6d106690d7fd8fa1677e133c94e155d
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Thu, 19 Jan 2012 11:59:30 -0600
-
-libxml2 (2.7.8.dfsg-5.1ubuntu2) precise; urgency=low
-
-  * SECURITY UPDATE: denial of service via buffer overflow
-    - parser.c: fix an allocation error when copying entities
-    - 5bd3c061823a8499b27422aee04ea20aae24f03e
-    - CVE-2011-3919
-
- -- Jamie Strandboge <jamie@ubuntu.com>  Wed, 18 Jan 2012 13:03:04 -0600
-
-libxml2 (2.7.8.dfsg-5.1ubuntu1) precise; urgency=low
-
-  * Merge from Debian testing, remaining changes:
-    - Build for multiarch.
-    - Use debhelper compat 9 instead of hardcoding --libdir.
-    - Move the udeb contents back into /usr/lib.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 12 Jan 2012 09:18:30 +0100
+libxml2 (2.9.1+dfsg1-5+deb8u4pexip1) pexip; urgency=low
+
+  * Migrate to Jessie
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 21 Mar 2017 00:30:41 +0000
+
+libxml2 (2.9.1+dfsg1-5+deb8u4) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix comparison with root node in xmlXPathCmpNodes
+  * Fix XPointer paths beginning with range-to (CVE-2016-5131)
+   (Closes: #840554)
+  * Disallow namespace nodes in XPointer ranges (CVE-2016-4658)
+    (Closes: #840553)
+  * Fix more NULL pointer derefs in xpointer.c
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 17 Dec 2016 19:42:58 +0100
+
+libxml2 (2.9.1+dfsg1-5+deb8u3) jessie; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix a problem unparsing URIs without a host part like qemu:///system.
+    This unbreaks libvirt, libsys-virt-perl and others (Closes: #781232)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 14 Jun 2016 20:20:41 +0200
+
+libxml2 (2.9.1+dfsg1-5+deb8u2) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Heap-based buffer overread in xmlNextChar (CVE-2016-1762)
+  * heap-buffer-overflow in xmlStrncat (CVE-2016-1834)
+  * Add missing increments of recursion depth counter to XML parser
+    (CVE-2016-3705) (Closes: #823414)
+  * Avoid an out of bound access when serializing malformed strings
+    (CVE-2016-4483) (Closes: #823405)
+  * Heap-buffer-overflow in xmlFAParsePosCharGroup (CVE-2016-1840)
+  * Heap-based buffer overread in xmlParserPrintFileContextInternal
+    (CVE-2016-1838)
+  * Heap-based buffer overread in xmlDictAddString (CVE-2016-1839
+    CVE-2015-8806 CVE-2016-2073) (Closes: #813613, #812807)
+  * Heap use-after-free in xmlDictComputeFastKey (CVE-2016-1836)
+  * Fix inappropriate fetch of entities content (CVE-2016-4449)
+  * Heap use-after-free in htmlParsePubidLiteral and htmlParseSystemiteral
+    (CVE-2016-1837)
+  * Heap use-after-free in xmlSAX2AttributeNs (CVE-2016-1835)
+  * Heap-based buffer-underreads due to xmlParseName (CVE-2016-4447)
+  * Heap-based buffer overread in htmlCurrentChar (CVE-2016-1833)
+  * Avoid building recursive entities (CVE-2016-3627) (Closes: #819006)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 28 May 2016 06:56:40 +0200
+
+libxml2 (2.9.1+dfsg1-5+deb8u1) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Add patches to address CVE-2015-7941.
+    CVE-2015-7941: Denial of service via out-of-bounds read. (Closes: #783010)
+  * Add 0058-CVE-2015-1819-Enforce-the-reader-to-run-in-constant-.patch.
+    CVE-2015-1819: Enforce the reader to run in constant memory.
+    (Closes: #782782)
+  * Add patches to address CVE-2015-8317.
+    CVE-2015-8317: Out-of-bounds heap read when parsing file with unfinished
+    xml declaration.
+  * Add patches to address CVE-2015-7942.
+    CVE-2015-7942: heap-based buffer overflow in
+    xmlParseConditionalSections(). (Closes: #802827)
+  * Add 0063-Fix-parsing-short-unclosed-comment-uninitialized-acc.patch patch.
+    Parsing an unclosed comment can result in `Conditional jump or move
+    depends on uninitialised value(s)` and unsafe memory access.
+    (Closes: #782985)
+  * Add 0064-CVE-2015-8035-Fix-XZ-compression-support-loop.patch patch.
+    CVE-2015-8035: DoS when parsing specially crafted XML document if XZ
+    support is enabled. (Closes: #803942)
+  * Add 0065-Avoid-extra-processing-of-MarkupDecl-when-EOF.patch patch.
+    CVE-2015-8241: Buffer overread with XML parser in xmlNextChar.
+    (Closes: #806384)
+  * Add 0066-Avoid-processing-entities-after-encoding-conversion-.patch patch.
+    CVE-2015-7498: Heap-based buffer overflow in xmlParseXmlDecl.
+  * Add 0067-CVE-2015-7497-Avoid-an-heap-buffer-overflow-in-xmlDi.patch patch.
+    CVE-2015-7497: Heap-based buffer overflow in xmlDictComputeFastQKey.
+  * Add 0068-CVE-2015-5312-Another-entity-expansion-issue.patch patch.
+    CVE-2015-5312: CPU exhaustion when processing specially crafted XML
+    input.
+  * Add patches to address CVE-2015-7499.
+    CVE-2015-7499: Heap-based buffer overflow in xmlGROW.
+  * Add 0071-CVE-2015-7500-Fix-memory-access-error-due-to-incorre.patch patch.
+    CVE-2015-7500: Heap buffer overflow in xmlParseMisc.
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Dec 2015 15:29:45 +0100
+
+libxml2 (2.9.1+dfsg1-5) testing; urgency=medium
+
+  * Add pkg-config to B-D
+  * Cherry-pick upstream memory related fixes
+    - Including CVE-2014-3660 (Closes: #765722, #768089)
+
+ -- Aron Xu <aron@debian.org>  Sun, 01 Feb 2015 13:48:36 +0800
+
+libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
+
+  [ Christian Svensson ]
+  * Do not build-depend on readline (Closes: #742350)
+
+  [ Daniel Schepler ]
+  * Patch to bootstrap without python (Closes: #738080)
+
+  [ Helmut Grohne ]
+  * Drop unneeded B-D on perl and binutils (Closes: #753005)
+
+  [ Adam Conrad ]
+  * Actually run dh_autoreconf, which the old/new mixed rules file misses.
+
+  [ Matthias Klose ]
+  * Add patch to fix python multiarch issue
+  * Allow the package to cross-build by tweaking B-Ds on python
+  * Set PYTHON_LIBS for cross builds
+
+  [ Aron Xu ]
+  * Use correct $CC
+  * Configure udeb without python
+  * New round of cherry-picking upstream fixes
+    - Includes fixes for CVE-2014-0191 (Closes: #747309).
+  * Call prename with -vf
+  * Require python-all-dev (>= 2.7.5-5~)
+  * Bump std-ver: 3.9.4 -> 3.9.5, no change
+
+ -- Aron Xu <aron@debian.org>  Wed, 09 Jul 2014 05:40:15 +0800
+
+libxml2 (2.9.1+dfsg1-3) unstable; urgency=low
+
+  * debian/patches/0007-Fix-XPath-optimization-with-predicates.patch:
+    - Upstream patch to fix XPath evaluation issue. (Closes: #713146)
+
+ -- Aron Xu <aron@debian.org>  Mon, 05 Aug 2013 11:02:43 +0800
+
+libxml2 (2.9.1+dfsg1-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * debian/patches/000[2-6]-*.patch: 
+     - cherry-picking upstream post-release fixes.
+
+ -- Aron Xu <aron@debian.org>  Mon, 17 Jun 2013 23:24:07 +0800
+
+libxml2 (2.9.1+dfsg1-1) experimental; urgency=low
+
+  * New upstream release (Closes: #696300, #705722).
+  * Add -llzma for static linking (Closes: #697382).
+  * Update symbols.
+  * Update debian/watch, thanks to Bart Martens.
+  * Use canonical Vcs-* fields.
+  * Mark python-libxml2-dbg as "Multi-Arch: same".
+
+ -- Aron Xu <aron@debian.org>  Sun, 09 Jun 2013 00:34:16 +0800
+
+libxml2 (2.9.0+dfsg1-4) experimental; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix potential out of bound access
+    CVE-2012-5134, Closes: #694521.
+
+ -- Aron Xu <aron@debian.org>  Wed, 28 Nov 2012 22:34:15 +0800
+
+libxml2 (2.9.0+dfsg1-3) experimental; urgency=low
+
+  [ Aron Xu ]
+  * Remove -L/usr/lib from xml2-config, advise to use pkg-config
+    in man, and add pkg-config to Suggests. (Closes: #689168)
+
+  [ YunQiang Su ]
+  * Fix python-libxml2 undefined symbol (Closes: #689191)
+
+  [ Daniel Holbach ]
+  * Add simple autopkgtest to the package (Closes: #690047)
+
+ -- Aron Xu <aron@debian.org>  Sun, 28 Oct 2012 03:59:43 +0800
+
+libxml2 (2.9.0+dfsg1-2) experimental; urgency=low
+
+  * Fix a thread portability problem by cherry-picking upstream
+    patch (Closes: #688473).
+
+ -- Aron Xu <aron@debian.org>  Sun, 23 Sep 2012 16:50:12 +0800
+
+libxml2 (2.9.0+dfsg1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Remove old patches applied upstream, cherry-pick one
+    upstream post release patch.
+  * Update symbols.
+  * Update std-ver 3.9.3 -> 3.9.4, no change required.
+
+ -- Aron Xu <aron@debian.org>  Fri, 21 Sep 2012 00:21:42 +0800
+
+libxml2 (2.8.0+dfsg1-5) unstable; urgency=low
+
+  [ Daniel Veillard ]
+  * Fix parser local buffers size problems
+  * Fix entities local buffers size problems
+  CVE-2012-2807, Closes: #679280.
+
+ -- Aron Xu <aron@debian.org>  Thu, 19 Jul 2012 17:11:09 +0800
+
+libxml2 (2.8.0+dfsg1-4) unstable; urgency=low
+
+  * Sanitize the output of `xml2-config --libs`.
+
+ -- Aron Xu <aron@debian.org>  Thu, 19 Jul 2012 17:10:06 +0800
+
+libxml2 (2.8.0+dfsg1-3) unstable; urgency=low
+
+  * Remove odd output of xml2-config --libs (Closes: #675682).
+  * Mark libxml2-dev "M-A: same" again, fixed xml2-config
+    (Closes: #674474).
+
+ -- Aron Xu <aron@debian.org>  Tue, 05 Jun 2012 01:44:14 +0800
+
+libxml2 (2.8.0+dfsg1-2) unstable; urgency=low
+
+  * debian/control:
+    - Remove "M-A: same" from libxml2-dev (Closes: #674474).
+    - Add "M-A: foreign" to libxml2-doc.
+  * debian/rules:
+    - Style change on calling dh using --with.
+    - Enable all hardening features.
+    - The sed command for removing DEB_HOST_MULTIARCH is not reverted
+      because it's generally a good idea to avoid it here.
+  * lintian-overrides:
+    - libxml2: package-name-doesnt-match-sonames
+    - python-libxml2-dbg: hardening-no-fortify-functions
+
+ -- Aron Xu <aron@debian.org>  Sat, 02 Jun 2012 15:09:37 +0800
+
+libxml2 (2.8.0+dfsg1-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #148220, #590934)
+  * Adjust changelog of previous NMU (Closes: #674739).
+  * Try to avoid useless space in /usr/bin/xml-config (Closes: #674474).
+
+ -- Aron Xu <aron@debian.org>  Fri, 25 May 2012 04:06:35 +0000
+
+libxml2 (2.7.8.dfsg-9.1) unstable; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix CVE-2011-3102: off by one pointer access in xpointer.c 
+    (Closes: #674191).
+
+ -- Michael Gilbert <mgilbert@debian.org>  Wed, 23 May 2012 13:48:52 -0400
+
+libxml2 (2.7.8.dfsg-9) unstable; urgency=low
+
+  * Multi-Arch ready. (Closes: #643026)
+    - M-A:same packages are libxml2, libxml2-dev and libxml2-dbg. 
+    - M-A:foreign package is libxml2-utils, others are not M-A.
+    - Library files in udeb are still placed under usr/lib directly.
+  * New binary: libxml2-utils-dbg.
+    Move debuggings symbols of libxml2-utils binaries to another package
+    in favor of marking libxml2-dbg as M-A: same. Descriptions of related
+    binary packages are slightly modified.
+  * Enable hardening for Python modules. (Closes: #664107)
+  * Add support for build-arch and build target, essentially make the
+    package not FTBFS anymore. (Closes: #668672)
+  * Use dh compat 9. Not hardcoding libdir in debian/rules.
+  * Port to source format 3.0 to ease future maintenance of patches.
+    - Old patches are stored in 01_historical_changes.patch
+    - Do not patch Makefile.in directly, use dh_autoreconf with patches to
+      configure.in and Makefile.am instead. This will not actually make
+      bootstraping a new architecture more difficult since we already have
+      gettext and autoconf in deep B-D, porters need to break it anyway.
+    - Store doc/examples/index.html in patch to avoid ciculate B-D with
+      xsltproc, we should not B-D on it.
+  * debian/*.dirs: removed, useless.
+
+ -- Aron Xu <aron@debian.org>  Sun, 22 Apr 2012 00:16:37 +0800
+
+libxml2 (2.7.8.dfsg-8) unstable; urgency=high
+
+  * New maintainer (Closes: #654176).
+  * Apply upstream patch to add randomization to hashing with large
+    dictionaries to mitigate hash DoS (CVE-2012-0841; Closes: #660846)
+  * Bump std-ver to 3.9.3, no change needed.
+
+ -- Aron Xu <aron@debian.org>  Thu, 12 Apr 2012 09:19:04 +0800
+
+libxml2 (2.7.8.dfsg-7) unstable; urgency=low
+
+  * Team upload.
+  * parser.c: Fix an allocation error when copying entities.
+    CVE-2011-3919. Closes: #656377.
+
+ -- Andrew O. Shadura <bugzilla@tut.by>  Fri, 20 Jan 2012 12:54:41 +0300
+
+libxml2 (2.7.8.dfsg-6) unstable; urgency=low
+
+  * Team upload.
+  * Enabled hardened build flags (Closes: #654903).
+  * error.c: Fix __xmlRaiseError (Closes: #622358).
+
+ -- Andrew O. Shadura <bugzilla@tut.by>  Thu, 12 Jan 2012 00:57:32 +0300
 
 libxml2 (2.7.8.dfsg-5.1) unstable; urgency=high
 
@@ -376,15 +305,6 @@ libxml2 (2.7.8.dfsg-5.1) unstable; urgency=high
   * Both closes: #652352.
 
  -- Luk Claes <luk@debian.org>  Fri, 30 Dec 2011 18:31:13 +0100
-
-libxml2 (2.7.8.dfsg-5ubuntu1) precise; urgency=low
-
-  * Build for multiarch; thanks to Riku Voipio for the patch.
-    Closes: #643026.
-  * Use debhelper compat 9 instead of hardcoding --libdir.
-  * Move the udeb contents back into /usr/lib.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 19 Oct 2011 22:00:20 -0700
 
 libxml2 (2.7.8.dfsg-5) unstable; urgency=low
 
