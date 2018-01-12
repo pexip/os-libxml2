@@ -1,11 +1,11 @@
-libxml2 (2.9.1+dfsg1-5+deb8u6) jessie-security; urgency=high
+libxml2 (2.9.4+dfsg1-2.2+deb9u2) stretch-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
   * Fix XPath stack frame logic (CVE-2017-15412) (Closes: #883790)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Jan 2018 19:06:50 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Jan 2018 19:15:42 +0100
 
-libxml2 (2.9.1+dfsg1-5+deb8u5) jessie-security; urgency=high
+libxml2 (2.9.4+dfsg1-2.2+deb9u1) stretch-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
   * Increase buffer space for port in HTTP redirect support (CVE-2017-7376)
@@ -28,31 +28,66 @@ libxml2 (2.9.1+dfsg1-5+deb8u5) jessie-security; urgency=high
   * Fix type confusion in xmlValidateOneNamespace (CVE-2017-0663)
     Heap buffer overflow in xmlAddID. (Closes: #870870)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Aug 2017 17:31:22 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Aug 2017 17:36:49 +0200
 
-libxml2 (2.9.1+dfsg1-5+deb8u4) jessie-security; urgency=high
+libxml2 (2.9.4+dfsg1-2.2) unstable; urgency=medium
 
-  * Non-maintainer upload by the Security Team.
+  * Non-maintainer upload.
+  * Fix attribute decoding during XML schema validation 
+    (Closes: #832602, #832864)
+
+ -- Mònica Ramírez Arceda <monica@debian.org>  Sat, 14 Jan 2017 15:31:49 +0100
+
+libxml2 (2.9.4+dfsg1-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
   * Fix comparison with root node in xmlXPathCmpNodes
   * Fix XPointer paths beginning with range-to (CVE-2016-5131)
-   (Closes: #840554)
+    (Closes: #840554)
   * Disallow namespace nodes in XPointer ranges (CVE-2016-4658)
     (Closes: #840553)
   * Fix more NULL pointer derefs in xpointer.c
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 17 Dec 2016 19:42:58 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 30 Oct 2016 16:30:55 +0100
 
-libxml2 (2.9.1+dfsg1-5+deb8u3) jessie; urgency=medium
+libxml2 (2.9.4+dfsg1-2) unstable; urgency=medium
+
+  [ YunQiang Su ]
+  * add python3 support (Closes: #737774)
+  * fix typo in test/control: python->python3
+
+  [ Aron Xu ]
+  * Really allow parallel building
+  * Mark python3-libxml2* as M-A: same
+
+ -- Aron Xu <aron@debian.org>  Mon, 12 Sep 2016 02:57:02 +0800
+
+libxml2 (2.9.4+dfsg1-1) unstable; urgency=medium
+
+  * Imported Upstream version 2.9.4+dfsg1
+    - Closes: 829718, CVE-2016-4448
+  * Drop patches applied upstream, refresh remainers
+  * Update Std-Ver to 3.9.8 from 3.9.6
+  * Update symbols for 2.9.4
+  * cherry-pick: Fix NULL pointer deref in XPointer range-to
+
+ -- Aron Xu <aron@debian.org>  Tue, 19 Jul 2016 11:42:45 +0800
+
+libxml2 (2.9.3+dfsg1-1.2) unstable; urgency=medium
+
+  [ Simon McVittie ]
+  * Non-maintainer upload.
+  * Add -arch suffix to some architecture-specific debhelper overrides,
+    fixing FTBFS with dpkg-buildpackage -A or when source-only uploads
+    are used (Closes: #806065)
+    - Do a build for the default Python version even when we are
+      building arch-indep-only: we need something for gtk-doc to analyze
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 05 Jun 2016 07:23:42 +0200
+
+libxml2 (2.9.3+dfsg1-1.1) unstable; urgency=medium
 
   * Non-maintainer upload.
-  * Fix a problem unparsing URIs without a host part like qemu:///system.
-    This unbreaks libvirt, libsys-virt-perl and others (Closes: #781232)
-
- -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 14 Jun 2016 20:20:41 +0200
-
-libxml2 (2.9.1+dfsg1-5+deb8u2) jessie-security; urgency=high
-
-  * Non-maintainer upload by the Security Team.
   * Heap-based buffer overread in xmlNextChar (CVE-2016-1762)
   * heap-buffer-overflow in xmlStrncat (CVE-2016-1834)
   * Add missing increments of recursion depth counter to XML parser
@@ -73,53 +108,57 @@ libxml2 (2.9.1+dfsg1-5+deb8u2) jessie-security; urgency=high
   * Heap-based buffer overread in htmlCurrentChar (CVE-2016-1833)
   * Avoid building recursive entities (CVE-2016-3627) (Closes: #819006)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 28 May 2016 06:56:40 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 28 May 2016 06:51:08 +0200
 
-libxml2 (2.9.1+dfsg1-5+deb8u1) jessie-security; urgency=high
+libxml2 (2.9.3+dfsg1-1) unstable; urgency=medium
 
-  * Non-maintainer upload by the Security Team.
-  * Add patches to address CVE-2015-7941.
-    CVE-2015-7941: Denial of service via out-of-bounds read. (Closes: #783010)
-  * Add 0058-CVE-2015-1819-Enforce-the-reader-to-run-in-constant-.patch.
-    CVE-2015-1819: Enforce the reader to run in constant memory.
-    (Closes: #782782)
-  * Add patches to address CVE-2015-8317.
-    CVE-2015-8317: Out-of-bounds heap read when parsing file with unfinished
-    xml declaration.
-  * Add patches to address CVE-2015-7942.
-    CVE-2015-7942: heap-based buffer overflow in
-    xmlParseConditionalSections(). (Closes: #802827)
-  * Add 0063-Fix-parsing-short-unclosed-comment-uninitialized-acc.patch patch.
-    Parsing an unclosed comment can result in `Conditional jump or move
-    depends on uninitialised value(s)` and unsafe memory access.
-    (Closes: #782985)
-  * Add 0064-CVE-2015-8035-Fix-XZ-compression-support-loop.patch patch.
-    CVE-2015-8035: DoS when parsing specially crafted XML document if XZ
-    support is enabled. (Closes: #803942)
-  * Add 0065-Avoid-extra-processing-of-MarkupDecl-when-EOF.patch patch.
-    CVE-2015-8241: Buffer overread with XML parser in xmlNextChar.
-    (Closes: #806384)
-  * Add 0066-Avoid-processing-entities-after-encoding-conversion-.patch patch.
-    CVE-2015-7498: Heap-based buffer overflow in xmlParseXmlDecl.
-  * Add 0067-CVE-2015-7497-Avoid-an-heap-buffer-overflow-in-xmlDi.patch patch.
-    CVE-2015-7497: Heap-based buffer overflow in xmlDictComputeFastQKey.
-  * Add 0068-CVE-2015-5312-Another-entity-expansion-issue.patch patch.
-    CVE-2015-5312: CPU exhaustion when processing specially crafted XML
-    input.
-  * Add patches to address CVE-2015-7499.
-    CVE-2015-7499: Heap-based buffer overflow in xmlGROW.
-  * Add 0071-CVE-2015-7500-Fix-memory-access-error-due-to-incorre.patch patch.
-    CVE-2015-7500: Heap buffer overflow in xmlParseMisc.
+  * New upstream release.
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 19 Dec 2015 15:29:45 +0100
+ -- Aron Xu <aron@debian.org>  Mon, 14 Dec 2015 15:35:25 +0800
 
-libxml2 (2.9.1+dfsg1-5) testing; urgency=medium
+libxml2 (2.9.2+zdfsg1-4) unstable; urgency=medium
 
-  * Add pkg-config to B-D
-  * Cherry-pick upstream memory related fixes
-    - Including CVE-2014-3660 (Closes: #765722, #768089)
+  * Revert everything in N'ACKed NMU revert to 2.9.1.
+    - Resolving regression, Closes: #754424
+    - Drop the following NMU, not needed in 2.9.2, Closes: #781232
+    - Drop not approved patch for GNOME #746048
+  * Revert icu dbg drop, but don't hardcode version,
+    thanks Matthias Klose <doko>, Closes: #798642
+  * Cherry pick upstream post release patches:
+    - Fix for regression triggered by CVE-2014-3660, Closes: #768089
+    - Fix for the spurious ID already defined error, Closes: #766884
+    - Fix for CVE-2015-1819, Closes: #782782
+    - Fix for GNOME #744980, Closes: #783010
+    - Several fixes for memory related issues.
 
- -- Aron Xu <aron@debian.org>  Sun, 01 Feb 2015 13:48:36 +0800
+ -- Aron Xu <aron@debian.org>  Tue, 22 Sep 2015 16:31:48 +0800
+
+libxml2 (2.9.2+dfsg1-3) unstable; urgency=medium
+
+  * Add icu related deps for -dev and -dbg packages
+    (Closes: #776741)
+
+ -- Aron Xu <aron@debian.org>  Sun, 01 Feb 2015 12:35:52 +0800
+
+libxml2 (2.9.2+dfsg1-2) unstable; urgency=medium
+
+  [ Michael Gilbert ]
+  * Enable icu support (Closes: #776254)
+
+  [ Aron Xu ]
+  * 0003-Fix-missing-entities-after-CVE-2014-3660-fix.patch:
+    Fix upstream bug triggered by CVE fix (Closes: #768089)
+
+ -- Aron Xu <aron@debian.org>  Fri, 30 Jan 2015 13:52:23 +0800
+
+libxml2 (2.9.2+dfsg1-1) unstable; urgency=low
+
+  * New upstream release (Closes: #765722, CVE-2014-3660)
+  * Remove no-longer-needed upstream patches
+  * Update distro patch
+  * Std-ver: 3.9.5 -> 3.9.6, no change.
+
+ -- Aron Xu <aron@debian.org>  Sun, 26 Oct 2014 07:04:50 +0800
 
 libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
 

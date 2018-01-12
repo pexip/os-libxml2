@@ -3,19 +3,21 @@ export DH_VERBOSE=1
 
 # The versions of python currently supported
 PYVERS=$(shell pyversions -s)
+PY3VERS=$(shell py3versions -s)
 # The current default version of python
 PYVER=$(shell pyversions -d)
+PY3VER=$(shell py3versions -d)
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 CC = $(DEB_HOST_GNU_TYPE)-gcc
-CFLAGS = `dpkg-buildflags --get CFLAGS` -Wall
+CFLAGS = `dpkg-buildflags --get CFLAGS` -Wall -O3
 LDFLAGS = `dpkg-buildflags --get LDFLAGS` -Wl,--as-needed
 CPPFLAGS = `dpkg-buildflags --get CPPFLAGS`
 
-TARGETS := main $(PYVERS) $(PYVERS:%=%-dbg)
+TARGETS := main $(PYVERS) $(PYVERS:%=%-dbg) $(PY3VERS) $(PY3VERS:%=%-dbg)
 
 WITH_UDEB := $(shell dpkg-vendor --derives-from Ubuntu && echo yes)
 
@@ -28,7 +30,7 @@ export DH_OPTIONS = -Nlibxml2-udeb
 endif
 
 ifeq ($(DEB_BUILD_PROFILE),stage1)
-DH_OPTIONS += -Npython-libxml2 -Npython-libxml2-dbg
+DH_OPTIONS += -Npython-libxml2 -Npython-libxml2-dbg -Npython3-libxml2 -Npython3-libxml2-dbg
 export DH_OPTIONS
 endif
 
@@ -40,43 +42,47 @@ debian/autoreconf.after:
 	dh_autoreconf
 
 doconfigure-%: debian/autoreconf.after
-	dh_auto_configure --builddirectory=builddir/$* -- $(CONFIGURE_FLAGS)
+	dh_auto_configure --parallel --builddirectory=builddir/$(*) -- $(CONFIGURE_FLAGS)
 
-doconfigure-main: CONFIGURE_FLAGS += --without-python
-doconfigure-python%: CONFIGURE_FLAGS += --with-python=/usr/bin/$*
+doconfigure-main: CONFIGURE_FLAGS += --without-python --with-icu
+doconfigure-python%: CONFIGURE_FLAGS += --with-python=/usr/bin/$(*)
 #doconfigure-udeb: CONFIGURE_FLAGS += --without-history --with-minimum --with-tree --with-output
-doconfigure-udeb: CONFIGURE_FLAGS += --without-history --with-tree --with-output --without-python
+doconfigure-udeb: CONFIGURE_FLAGS += --without-history --with-tree --with-output --without-python --without-icu
 
-override_dh_auto_build: $(TARGETS:%=dobuild-%)
-
-dobuild-%: BUILD_DIR=builddir/$*
+dobuild-%: BUILD_DIR=builddir/$(*)
 dobuild-%: doconfigure-%
-	$(if $(filter $(BUILD_DIR),builddir/$*),,[ -d $(BUILD_DIR) ] || mv builddir/$*/python $(BUILD_DIR))
-	dh_auto_build --builddirectory=$(BUILD_DIR) -- $(BUILD_FLAGS)
+	$(if $(filter $(BUILD_DIR),builddir/$(*)),,[ -d $(BUILD_DIR) ] || mv builddir/$(*)/python $(BUILD_DIR))
+	dh_auto_build --parallel --builddirectory=$(BUILD_DIR) -- $(BUILD_FLAGS)
 
-dobuild-python%: BUILD_DIR=builddir/main/$*
-dobuild-python%: BUILD_FLAGS = libxml2mod_la_LIBADD='$$(mylibs)' \
-    PYTHON_INCLUDES="$(shell $(DEB_HOST_GNU_TYPE)-python-config --includes)" \
-    PYTHON_LIBS="$(shell $(DEB_HOST_GNU_TYPE)-python-config --ldflags)"
-dobuild-python%-dbg: BUILD_FLAGS += PYTHON_INCLUDES="$(shell $(DEB_HOST_GNU_TYPE)-python-dbg-config --includes)" \
-    PYTHON_LIBS="$(shell $(DEB_HOST_GNU_TYPE)-python-dbg-config --ldflags)" \
-    CFLAGS="$(CFLAGS) -Wall -g -O0" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS) \
-    -L$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)"
+dobuild-python%: BUILD_DIR=builddir/main/$(*)
+dobuild-python%: BUILD_FLAGS=libxml2mod_la_LIBADD='$$(mylibs)' \
+    PYTHON_INCLUDES='$(shell $(DEB_HOST_GNU_TYPE)-$(*)-config --includes)' \
+    PYTHON_LIBS='$(shell $(DEB_HOST_GNU_TYPE)-$(*)-config --ldflags)'
+dobuild-python%-dbg: BUILD_FLAGS+=PYTHON_INCLUDES='$(shell $(DEB_HOST_GNU_TYPE)-$(*)-config --includes)' \
+    PYTHON_LIBS='$(shell $(DEB_HOST_GNU_TYPE)-$(*)-config --ldflags)' \
+    CFLAGS='$(CFLAGS) -Wall -g -O0' CPPFLAGS='$(CPPFLAGS)' LDFLAGS='$(LDFLAGS) \
+    -L$(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)'
+
+#override_dh_auto_build: $(TARGETS:%=dobuild-%)
 build-arch: $(TARGETS:%=dobuild-%)
-build-indep:
+build-indep: dobuild-main
 build: build-arch build-indep
 
 override_dh_auto_clean:
 	rm -rf builddir debian/tmp-dbg debian/tmp-udeb
 	dh_auto_clean
 
-override_dh_auto_install: $(TARGETS:%=doinstall-%)
+override_dh_auto_install-arch: $(TARGETS:%=doinstall-%)
+	find debian/ -name *.la -delete
+
+override_dh_auto_install-indep: doinstall-main
 	find debian/ -name *.la -delete
 
 doinstall-main:
 	dh_auto_install --builddirectory=builddir/main
 	mv debian/tmp/usr/share/aclocal/libxml.m4 debian/tmp/usr/share/aclocal/libxml2.m4
 
+override_dh_auto_install-indep:
 	# Properly install documentation in /usr/share/doc/libxml2-doc
 	install -d debian/tmp/usr/share/doc/libxml2-doc/examples
 	install -m 644 \
@@ -94,11 +100,11 @@ doinstall-main:
 		doc/tutorial debian/tmp/usr/share/doc/libxml2-doc
 
 doinstall-python%-dbg:
-	$(MAKE) -C builddir/main/python$*-dbg DESTDIR=$(CURDIR)/debian/tmp-dbg install-pythonLTLIBRARIES
-	prename -vf 's/(?<!_d)\.so$$/_d.so/' debian/tmp-dbg/usr/lib/python$*/*-packages/*.so
+	$(MAKE) -C builddir/main/python$(*)-dbg DESTDIR=$(CURDIR)/debian/tmp-dbg install-pythonLTLIBRARIES
+	prename -vf 's/(?<!_d)\.so$$/_d.so/' debian/tmp-dbg/usr/lib/python$(*)/*-packages/*.so
 
 doinstall-python%:
-	dh_auto_install --builddirectory=builddir/main/python$*
+	dh_auto_install --builddirectory=builddir/main/python$(*)
 
 doinstall-udeb:
 	dh_auto_install --builddirectory=builddir/udeb --destdir=debian/tmp-udeb
@@ -106,6 +112,7 @@ doinstall-udeb:
 override_dh_installdocs:
 	dh_installdocs -A AUTHORS TODO README NEWS
 	dh_installdocs -ppython-libxml2 python/TODO
+	dh_installdocs -ppython3-libxml2 python/TODO
 
 override_dh_compress:
 	dh_compress -Xexamples/ -Xtutorial/ -Xhtml/ -X.html
@@ -114,19 +121,21 @@ override_dh_installchangelogs:
 	dh_installchangelogs -plibxml2 ChangeLog
 	dh_installchangelogs -Nlibxml2 -XChangeLog
 
-override_dh_install:
-	dh_install -Npython-libxml2-dbg -Nlibxml2-udeb
+override_dh_install-arch:
+	dh_install -Npython-libxml2-dbg -Npython3-libxml2-dbg -Nlibxml2-udeb
 ifneq ($(DEB_BUILD_PROFILE),stage1)
 	dh_install -ppython-libxml2-dbg --sourcedir=debian/tmp-dbg
+	dh_install -ppython3-libxml2-dbg --sourcedir=debian/tmp-dbg
 endif
 	dh_install -plibxml2-udeb --sourcedir=debian/tmp-udeb
 	sed -i -e 's,/lib/$(DEB_HOST_MULTIARCH),/lib,' debian/libxml2-dev/usr/bin/xml2-config
 
 override_dh_strip:
-	dh_strip -a --dbg-package=libxml2-dbg -Nlibxml2-udeb -Nlibxml2-utils -Nlibxml2-utils-dbg -Npython-libxml2 -Npython-libxml2-dbg
+	dh_strip -a --dbg-package=libxml2-dbg -Nlibxml2-udeb -Nlibxml2-utils -Nlibxml2-utils-dbg -Npython-libxml2 -Npython-libxml2-dbg -Npython3-libxml2 -Npython3-libxml2-dbg
 	dh_strip -plibxml2-utils --dbg-package=libxml2-utils-dbg
 ifneq ($(DEB_BUILD_PROFILE),stage1)
 	dh_strip -ppython-libxml2 --dbg-package=python-libxml2-dbg
+	dh_strip -ppython3-libxml2 --dbg-package=python3-libxml2-dbg
 endif
 	$(foreach python, $(filter-out $(PYVER), $(PYVERS)),\
 		cd $(CURDIR)/debian/python-libxml2/usr/lib/pyshared; \
@@ -134,16 +143,23 @@ endif
 			rm -f $(python)/libxml2mod.so; \
 			ln -s ../$(PYVER)/libxml2mod.so $(python)/libxml2mod.so; \
 		fi;)
-	dh_strip
+	$(foreach python3, $(filter-out $(PY3VER), $(PY3VERS)),\
+		cd $(CURDIR)/debian/python3-libxml2/usr/lib/pyshared; \
+		if diff $(python3)/libxml2mod.so $(PYVER)/libxml2mod.so > /dev/null 2>&1; then \
+			rm -f $(python3)/libxml2mod.so; \
+			ln -s ../$(PY3VER)/libxml2mod.so $(python3)/libxml2mod.so; \
+		fi;)
+	dh_strip -Npython-libxml2-dbg -Npython3-libxml2-dbg
 
 override_dh_makeshlibs:
 	dh_makeshlibs -a $(if $(WITH_UDEB),--add-udeb=libxml2-udeb )-V 'libxml2 (>= 2.7.4)' -- -c4
+
+override_dh_gencontrol:
+	dh_gencontrol -- -Vdep:libicudbg="`dpkg-query -f '$${Depends}' -W libicu-dev | sed 's/.*\(libicu[0-9]*\).*/\1/'`-dbg"
 
 %:
 ifeq ($(DEB_BUILD_PROFILE),stage1)
 	dh $@ --with autoreconf
 else
-	dh $@ --with autoreconf,python2
+	dh $@ --parallel --with autoreconf,python2,python3
 endif
-
-

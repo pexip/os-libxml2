@@ -3,15 +3,16 @@ Priority: optional
 Section: libs
 Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
 Uploaders: Aron Xu <aron@debian.org>, YunQiang Su <wzssyqa@gmail.com>
-Standards-Version: 3.9.5
+Standards-Version: 3.9.8
 Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, pkg-config,
  libpython-all-dev, libpython-all-dbg,
  python-all-dev:any (>= 2.7.5-5~), python-all-dbg:any,
- zlib1g-dev | libz-dev, liblzma-dev
+ libpython3-all-dev, libpython3-all-dbg,
+ python3-all-dev:any (>= 3.5), python3-all-dbg:any,
+ zlib1g-dev | libz-dev, liblzma-dev, libicu-dev
 Homepage: http://xmlsoft.org/
 Vcs-Git: git://anonscm.debian.org/debian-xml-sgml/libxml2.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=debian-xml-sgml/libxml2.git
-XS-Testsuite: autopkgtest
 
 Package: libxml2
 Priority: standard
@@ -67,7 +68,7 @@ Description: XML utilities (debug extension)
 Package: libxml2-dev
 Architecture: any
 Section: libdevel
-Depends: libxml2 (= ${binary:Version}), ${misc:Depends}
+Depends: libxml2 (= ${binary:Version}), libicu-dev, ${misc:Depends}
 Suggests: pkg-config
 Multi-Arch: same
 Description: Development files for the GNOME XML library
@@ -85,7 +86,7 @@ Package: libxml2-dbg
 Architecture: any
 Section: debug
 Priority: extra
-Depends: libxml2 (= ${binary:Version}), ${misc:Depends}
+Depends: libxml2 (= ${binary:Version}), ${dep:libicudbg}, ${misc:Depends}
 Multi-Arch: same
 Description: Debugging symbols for the GNOME XML library
  XML is a metalanguage to let you design your own markup language.
@@ -146,3 +147,38 @@ Description: Python bindings for the GNOME XML library (debug extension)
  .
  This package contains the files needed to use the GNOME XML library
  in Python programs for use with the Python debug interpreter.
+
+Package: python3-libxml2
+Architecture: any
+Section: python
+Multi-Arch: same
+Provides: ${python3:Provides}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}
+Description: Python3 bindings for the GNOME XML library
+ XML is a metalanguage to let you design your own markup language.
+ A regular markup language defines a way to describe information in
+ a certain class of documents (eg HTML). XML lets you define your
+ own customized markup languages for many classes of document. It
+ can do this because it's written in SGML, the international standard
+ metalanguage for markup languages.
+ .
+ This package contains the files needed to use the GNOME XML library
+ in Python3 programs.
+
+Package: python3-libxml2-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Multi-Arch: same
+Provides: ${python3:Provides}
+Depends: python3-dbg, python3-libxml2 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Python3 bindings for the GNOME XML library (debug extension)
+ XML is a metalanguage to let you design your own markup language.
+ A regular markup language defines a way to describe information in
+ a certain class of documents (eg HTML). XML lets you define your
+ own customized markup languages for many classes of document. It
+ can do this because it's written in SGML, the international standard
+ metalanguage for markup languages.
+ .
+ This package contains the files needed to use the GNOME XML library
+ in Python3 programs for use with the Python3 debug interpreter.
