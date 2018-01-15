@@ -1,3 +1,16 @@
+libxml2 (2.9.1+dfsg1-5+deb8u6pexip1) pexip; urgency=low
+
+  * New upstream release
+
+ -- John-Mark Bell <jmb@pexip.com>  Mon, 15 Jan 2018 11:54:42 +0000
+
+libxml2 (2.9.1+dfsg1-5+deb8u6) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix XPath stack frame logic (CVE-2017-15412) (Closes: #883790)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Jan 2018 19:06:50 +0100
+
 libxml2 (2.9.1+dfsg1-5+deb8u5pexip1) pexip; urgency=low
 
   * New upstream release
