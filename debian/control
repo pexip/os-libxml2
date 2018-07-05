@@ -13,7 +13,7 @@ Homepage: http://xmlsoft.org/
 Vcs-Git: git://anonscm.debian.org/debian-xml-sgml/libxml2.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=debian-xml-sgml/libxml2.git
 XS-Testsuite: autopkgtest
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ jessie
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
 
 Package: libxml2
 Priority: standard
