@@ -1,3 +1,9 @@
+libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip1) pexip; urgency=medium
+
+  * Migrate to Stretch
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:25:54 +0000
+
 libxml2 (2.9.4+dfsg1-2.2+deb9u2) stretch-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
