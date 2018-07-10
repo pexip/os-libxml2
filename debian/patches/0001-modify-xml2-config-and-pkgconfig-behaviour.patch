@@ -1,51 +1,39 @@
 From: Aron Xu <aron@debian.org>
-Date: Fri, 21 Sep 2012 00:19:41 +0800
+Date: Sun, 26 Oct 2014 06:02:29 +0800
 Subject: modify xml2-config and pkgconfig behaviour
 
 ---
- configure.in                 |  2 +-
+ configure.ac                 |  2 +-
  libxml-2.0-uninstalled.pc.in |  3 ++-
- libxml-2.0.pc.in             |  2 +-
  xml2-config.1                |  4 ++++
  xml2-config.in               | 22 ++++++++++------------
- 5 files changed, 18 insertions(+), 15 deletions(-)
+ 4 files changed, 17 insertions(+), 14 deletions(-)
 
-diff --git a/configure.in b/configure.in
-index d449b11..668f233 100644
---- a/configure.in
-+++ b/configure.in
-@@ -1380,7 +1380,7 @@ case "$host" in
- 	*) M_LIBS="-lm"
- 	;;
- esac
--XML_LIBS="-lxml2 $Z_LIBS $THREAD_LIBS $ICONV_LIBS $M_LIBS $LIBS"
+diff --git a/configure.ac b/configure.ac
+index 911984e..6681b27 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1555,7 +1555,7 @@ else
+         WITH_ICU=1
+     fi
+ fi
+-XML_LIBS="-lxml2 $Z_LIBS $LZMA_LIBS $THREAD_LIBS $ICONV_LIBS $ICU_LIBS $M_LIBS $LIBS"
 +XML_LIBS="-lxml2"
  XML_LIBTOOLLIBS="libxml2.la"
- AC_SUBST(WITH_ICONV)
+ AC_SUBST(WITH_ICU)
  
 diff --git a/libxml-2.0-uninstalled.pc.in b/libxml-2.0-uninstalled.pc.in
-index cab6834..af16ebc 100644
+index 60b886b..0d5d6cb 100644
 --- a/libxml-2.0-uninstalled.pc.in
 +++ b/libxml-2.0-uninstalled.pc.in
 @@ -8,5 +8,6 @@ Name: libXML
  Version: @VERSION@
  Description: libXML library version2.
  Requires:
--Libs: -L${libdir} -lxml2 @ICU_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @ICONV_LIBS@ @M_LIBS@ @LIBS@
+-Libs: -L${libdir} -lxml2 @ICU_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @LZMA_LIBS@ @ICONV_LIBS@ @M_LIBS@ @LIBS@
 +Libs: -L${libdir} -lxml2
-+Libs.private: @BASE_THREAD_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @ICONV_LIBS@ @M_LIBS@ @LIBS@
++Libs.private: @ICU_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @LZMA_LIBS@ @ICONV_LIBS@ @M_LIBS@ @LIBS@
  Cflags: -I${includedir} @XML_INCLUDEDIR@ @XML_CFLAGS@
-diff --git a/libxml-2.0.pc.in b/libxml-2.0.pc.in
-index f5f5f03..0de667b 100644
---- a/libxml-2.0.pc.in
-+++ b/libxml-2.0.pc.in
-@@ -9,5 +9,5 @@ Version: @VERSION@
- Description: libXML library version2.
- Requires:
- Libs: -L${libdir} -lxml2
--Libs.private: @ICU_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @ICONV_LIBS@ @M_LIBS@ @WIN32_EXTRA_LIBADD@ @LIBS@
-+Libs.private: @ICU_LIBS@ @THREAD_LIBS@ @Z_LIBS@ @ICONV_LIBS@ @M_LIBS@ @WIN32_EXTRA_LIBADD@ @LIBS@ @LZMA_LIBS@
- Cflags: @XML_INCLUDEDIR@ @XML_CFLAGS@
 diff --git a/xml2-config.1 b/xml2-config.1
 index 8cf9858..7b4195d 100644
 --- a/xml2-config.1

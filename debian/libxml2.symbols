@@ -40,13 +40,14 @@ libxml2.so.2 libxml2 #MINVER#
  (symver|optional)LIBXML2_2.8.0 2.8.0
  (symver|optional)LIBXML2_2.9.0 2.9.0
  (symver|optional)LIBXML2_2.9.1 2.9.1
+ (optional)__libxml2_xzclose@Base 2.8.0
+ (optional)__libxml2_xzcompressed@Base 2.9.3
+ (optional)__libxml2_xzdopen@Base 2.8.0
+ (optional)__libxml2_xzopen@Base 2.8.0
+ (optional)__libxml2_xzread@Base 2.8.0
  __docbDefaultSAXHandler@Base 2.6.27
  __htmlDefaultSAXHandler@Base 2.6.27
  __htmlParseContent@Base 2.6.27
- __libxml2_xzclose@Base 2.8.0
- __libxml2_xzdopen@Base 2.8.0
- __libxml2_xzopen@Base 2.8.0
- __libxml2_xzread@Base 2.8.0
  __oldXMLWDcompatibility@Base 2.6.27
  __xmlBufferAllocScheme@Base 2.6.27
  __xmlDefaultBufferSize@Base 2.6.27
@@ -169,3 +170,4 @@ libxml2.so.2 libxml2 #MINVER#
  xmlXPathNodeEval@LIBXML2_2.9.1 2.9.1
  xmlXPathSetContextNode@LIBXML2_2.9.1 2.9.1
  xmlXPtrAdvanceNode@Base 2.6.27
+ xmlEscapeFormatString@Base 2.9.4
