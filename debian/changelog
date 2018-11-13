@@ -1,3 +1,9 @@
+libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip2) pexip; urgency=medium
+
+  * Backport fix for CVE-2018-14567
+
+ -- John-Mark Bell <jmb@pexip.com>  Tue, 13 Nov 2018 00:32:11 +0000
+
 libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip1) pexip; urgency=medium
 
   * Migrate to Stretch

@@ -12,3 +12,4 @@
 0012-Fix-buffer-size-checks-in-xmlSnprintfElementContent.patch
 0013-Fix-type-confusion-in-xmlValidateOneNamespace.patch
 0014-Fix-XPath-stack-frame-logic.patch
+CVE-2018-14567.patch
