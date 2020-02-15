@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 9), dh-autoreconf, autotools-dev, pkg-config,
 Homepage: http://xmlsoft.org/
 Vcs-Git: git://anonscm.debian.org/debian-xml-sgml/libxml2.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=debian-xml-sgml/libxml2.git
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ stretch
+XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: libxml2
 Priority: standard
