@@ -1,3 +1,9 @@
+libxml2 (2.9.4+dfsg1-7pexip1) pexip; urgency=medium
+
+  * Migrate to Buster
+
+ -- Vincent Sanders <vince@pexip.com>  Mon, 02 Mar 2020 13:33:46 +0000
+
 libxml2 (2.9.4+dfsg1-7) unstable; urgency=medium
 
   * Team upload.
