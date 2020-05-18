@@ -1,4 +1,4 @@
-libxml2 (2.9.4+dfsg1-7pexip1) pexip; urgency=medium
+libxml2 (2.9.4+dfsg1-7+b3pexip1) pexip; urgency=medium
 
   * Migrate to Buster
 
