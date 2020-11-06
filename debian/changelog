@@ -1,3 +1,14 @@
+libxml2 (2.9.4+dfsg1-7+deb10u1) buster; urgency=medium
+
+  * CVE-2017-18258 (Closes: #895245)
+  * CVE-2018-14404 (Closes: #901817)
+  * CVE-2018-14567
+  * CVE-2019-19956
+  * CVE-2019-20388 (Closes: #949583)
+  * CVE-2020-7595  (Closes: #949582)
+
+ -- Moritz Mühlenhoff <moritz@debian.org>  Fri, 06 Nov 2020 18:35:40 +0100
+
 libxml2 (2.9.4+dfsg1-7) unstable; urgency=medium
 
   * Team upload.
