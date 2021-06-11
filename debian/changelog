@@ -1,3 +1,19 @@
+libxml2 (2.9.4+dfsg1-7+deb10u2) buster; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix out-of-bounds read with 'xmllint --htmlout' (CVE-2020-24977)
+    (Closes: #969529)
+  * Fix use-after-free with `xmllint --html --push` (CVE-2021-3516)
+    (Closes: #987739)
+  * Validate UTF8 in xmlEncodeEntities (CVE-2021-3517) (Closes: #987738)
+  * Fix user-after-free with `xmllint --xinclude --dropdtd` (CVE-2021-3518)
+    (Closes: #987737)
+  * Propagate error in xmlParseElementChildrenContentDeclPriv (CVE-2021-3537)
+    (Closes: #988123)
+  * Patch for security issue CVE-2021-3541 (Closes: #988603)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 11 Jun 2021 18:57:11 +0200
+
 libxml2 (2.9.4+dfsg1-7+deb10u1) buster; urgency=medium
 
   * CVE-2017-18258 (Closes: #895245)
