@@ -3,9 +3,8 @@ Priority: optional
 Section: libs
 Maintainer: Pexip AS <packaging@pexip.com>
 XSBC-Pexip-Original-Maintainer: Debian XML/SGML Group <debian-xml-sgml-pkgs@lists.alioth.debian.org>
-XSBC-Pexip-Original-Uploaders:
- Aron Xu <aron@debian.org>,
- YunQiang Su <wzssyqa@gmail.com>,
+XSBC-Pexip-Original-Uploaders: Aron Xu <aron@debian.org>,
+ YunQiang Su <wzssyqa@gmail.com>
 Build-Depends:
  debhelper (>= 11),
  dh-python <!nopython>,

@@ -1,3 +1,25 @@
+libxml2 (2.9.4+dfsg1-7+deb10u2pexip1) pexip; urgency=medium
+
+  * New upstream version
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Mon, 21 Jun 2021 09:34:49 +0100
+
+libxml2 (2.9.4+dfsg1-7+deb10u2) buster; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix out-of-bounds read with 'xmllint --htmlout' (CVE-2020-24977)
+    (Closes: #969529)
+  * Fix use-after-free with `xmllint --html --push` (CVE-2021-3516)
+    (Closes: #987739)
+  * Validate UTF8 in xmlEncodeEntities (CVE-2021-3517) (Closes: #987738)
+  * Fix user-after-free with `xmllint --xinclude --dropdtd` (CVE-2021-3518)
+    (Closes: #987737)
+  * Propagate error in xmlParseElementChildrenContentDeclPriv (CVE-2021-3537)
+    (Closes: #988123)
+  * Patch for security issue CVE-2021-3541 (Closes: #988603)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 11 Jun 2021 18:57:11 +0200
+
 libxml2 (2.9.4+dfsg1-7+deb10u1pexip1) pexip; urgency=medium
 
   * New upstream version
@@ -15,6 +37,7 @@ libxml2 (2.9.4+dfsg1-7+deb10u1) buster; urgency=medium
 
  -- Moritz Mühlenhoff <moritz@debian.org>  Fri, 06 Nov 2020 18:35:40 +0100
 
+<<<<<<< HEAD
 libxml2 (2.9.4+dfsg1-7+b3pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment
@@ -27,6 +50,8 @@ libxml2 (2.9.4+dfsg1-7+b3pexip1) pexip; urgency=medium
 
  -- Vincent Sanders <vince@pexip.com>  Mon, 02 Mar 2020 13:33:46 +0000
 
+=======
+>>>>>>> debian
 libxml2 (2.9.4+dfsg1-7) unstable; urgency=medium
 
   * Team upload.
@@ -176,6 +201,7 @@ libxml2 (2.9.4+dfsg1-3) unstable; urgency=medium
 
  -- Mattia Rizzolo <mattia@debian.org>  Tue, 04 Jul 2017 21:59:55 +0200
 
+<<<<<<< HEAD
 libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip3) pexip; urgency=medium
 
   * Backport fix for CVE-2017-18258
@@ -194,6 +220,8 @@ libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip1) pexip; urgency=medium
 
  -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:25:54 +0000
 
+=======
+>>>>>>> debian
 libxml2 (2.9.4+dfsg1-2.2) unstable; urgency=medium
 
   * Non-maintainer upload.
@@ -324,6 +352,7 @@ libxml2 (2.9.2+dfsg1-1) unstable; urgency=low
 
  -- Aron Xu <aron@debian.org>  Sun, 26 Oct 2014 07:04:50 +0800
 
+<<<<<<< HEAD
 libxml2 (2.9.1+dfsg1-5+deb8u6pexip1) pexip; urgency=low
 
   * New upstream release
@@ -342,6 +371,8 @@ libxml2 (2.9.1+dfsg1-5+deb8u4pexip1) pexip; urgency=low
 
  -- John-Mark Bell <jmb@pexip.com>  Tue, 21 Mar 2017 00:30:41 +0000
 
+=======
+>>>>>>> debian
 libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
 
   [ Christian Svensson ]

@@ -23,3 +23,9 @@
 0023-CVE-2019-19956.patch
 0024-CVE-2019-20388.patch
 0025-CVE-2020-7595.patch
+Fix-out-of-bounds-read-with-xmllint-htmlout.patch
+Fix-use-after-free-with-xmllint-html-push.patch
+Validate-UTF8-in-xmlEncodeEntities.patch
+Fix-user-after-free-with-xmllint-xinclude-dropdtd.patch
+Propagate-error-in-xmlParseElementChildrenContentDec.patch
+Patch-for-security-issue-CVE-2021-3541.patch
