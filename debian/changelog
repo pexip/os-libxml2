@@ -37,7 +37,6 @@ libxml2 (2.9.4+dfsg1-7+deb10u1) buster; urgency=medium
 
  -- Moritz Mühlenhoff <moritz@debian.org>  Fri, 06 Nov 2020 18:35:40 +0100
 
-<<<<<<< HEAD
 libxml2 (2.9.4+dfsg1-7+b3pexip2) pexip; urgency=medium
 
   * Rebuild in buster environment
@@ -50,8 +49,6 @@ libxml2 (2.9.4+dfsg1-7+b3pexip1) pexip; urgency=medium
 
  -- Vincent Sanders <vince@pexip.com>  Mon, 02 Mar 2020 13:33:46 +0000
 
-=======
->>>>>>> debian
 libxml2 (2.9.4+dfsg1-7) unstable; urgency=medium
 
   * Team upload.
