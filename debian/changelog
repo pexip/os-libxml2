@@ -1,3 +1,18 @@
+libxml2 (2.9.4+dfsg1-7+deb10u3pexip1) pexip; urgency=medium
+
+  * New upstream version
+  * Fix up old changelog entries
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 28 Mar 2022 15:52:38 +0100
+
+libxml2 (2.9.4+dfsg1-7+deb10u3) buster; urgency=medium
+
+  * Non-maintainer upload.
+  * Use-after-free of ID and IDREF attributes (CVE-2022-23308)
+    (Closes: #1006489)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 17 Mar 2022 22:04:26 +0100
+
 libxml2 (2.9.4+dfsg1-7+deb10u2pexip1) pexip; urgency=medium
 
   * New upstream version
@@ -198,7 +213,6 @@ libxml2 (2.9.4+dfsg1-3) unstable; urgency=medium
 
  -- Mattia Rizzolo <mattia@debian.org>  Tue, 04 Jul 2017 21:59:55 +0200
 
-<<<<<<< HEAD
 libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip3) pexip; urgency=medium
 
   * Backport fix for CVE-2017-18258
@@ -217,8 +231,6 @@ libxml2 (2.9.4+dfsg1-2.2+deb9u2pexip1) pexip; urgency=medium
 
  -- John-Mark Bell <jmb@pexip.com>  Tue, 10 Jul 2018 11:25:54 +0000
 
-=======
->>>>>>> debian
 libxml2 (2.9.4+dfsg1-2.2) unstable; urgency=medium
 
   * Non-maintainer upload.
@@ -349,7 +361,6 @@ libxml2 (2.9.2+dfsg1-1) unstable; urgency=low
 
  -- Aron Xu <aron@debian.org>  Sun, 26 Oct 2014 07:04:50 +0800
 
-<<<<<<< HEAD
 libxml2 (2.9.1+dfsg1-5+deb8u6pexip1) pexip; urgency=low
 
   * New upstream release
@@ -368,8 +379,6 @@ libxml2 (2.9.1+dfsg1-5+deb8u4pexip1) pexip; urgency=low
 
  -- John-Mark Bell <jmb@pexip.com>  Tue, 21 Mar 2017 00:30:41 +0000
 
-=======
->>>>>>> debian
 libxml2 (2.9.1+dfsg1-4) unstable; urgency=low
 
   [ Christian Svensson ]

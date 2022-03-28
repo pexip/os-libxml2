@@ -29,3 +29,4 @@ Validate-UTF8-in-xmlEncodeEntities.patch
 Fix-user-after-free-with-xmllint-xinclude-dropdtd.patch
 Propagate-error-in-xmlParseElementChildrenContentDec.patch
 Patch-for-security-issue-CVE-2021-3541.patch
+CVE-2022-23308-Use-after-free-of-ID-and-IDREF-attrib.patch
