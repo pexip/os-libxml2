@@ -1,46 +1,235 @@
-libxml2 (2.9.4+dfsg1-7+deb10u4) buster-security; urgency=high
+libxml2 (2.9.10+dfsg-6.7+deb11u2) bullseye-security; urgency=high
 
   * Non-maintainer upload by the Security Team.
   * Fix integer overflow in xmlBufferResize
   * Fix integer overflows in xmlBuf and xmlBuffer (CVE-2022-29824)
     (Closes: #1010526)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 May 2022 16:13:21 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 May 2022 15:58:46 +0200
 
-libxml2 (2.9.4+dfsg1-7+deb10u3) buster; urgency=medium
+libxml2 (2.9.10+dfsg-6.7+deb11u1) bullseye; urgency=medium
 
   * Non-maintainer upload.
   * Use-after-free of ID and IDREF attributes (CVE-2022-23308)
     (Closes: #1006489)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 17 Mar 2022 22:04:26 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 17 Mar 2022 21:52:53 +0100
 
-libxml2 (2.9.4+dfsg1-7+deb10u2) buster; urgency=medium
+libxml2 (2.9.10+dfsg-6.7) unstable; urgency=medium
 
   * Non-maintainer upload.
-  * Fix out-of-bounds read with 'xmllint --htmlout' (CVE-2020-24977)
-    (Closes: #969529)
+  * Patch for security issue CVE-2021-3541 (Closes: #988603)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 22 May 2021 08:21:29 +0200
+
+libxml2 (2.9.10+dfsg-6.6) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Upload to unstable.
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 06 May 2021 10:48:16 +0200
+
+libxml2 (2.9.10+dfsg-6.5) experimental; urgency=medium
+
+  * Non-maintainer upload.
+  * Propagate error in xmlParseElementChildrenContentDeclPriv (CVE-2021-3537)
+    (Closes: #988123)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 06 May 2021 10:28:10 +0200
+
+libxml2 (2.9.10+dfsg-6.4) experimental; urgency=medium
+
+  * Non-maintainer upload.
   * Fix use-after-free with `xmllint --html --push` (CVE-2021-3516)
     (Closes: #987739)
   * Validate UTF8 in xmlEncodeEntities (CVE-2021-3517) (Closes: #987738)
   * Fix user-after-free with `xmllint --xinclude --dropdtd` (CVE-2021-3518)
     (Closes: #987737)
-  * Propagate error in xmlParseElementChildrenContentDeclPriv (CVE-2021-3537)
-    (Closes: #988123)
-  * Patch for security issue CVE-2021-3541 (Closes: #988603)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 11 Jun 2021 18:57:11 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 02 May 2021 16:23:29 +0200
 
-libxml2 (2.9.4+dfsg1-7+deb10u1) buster; urgency=medium
+libxml2 (2.9.10+dfsg-6.3) unstable; urgency=medium
 
-  * CVE-2017-18258 (Closes: #895245)
-  * CVE-2018-14404 (Closes: #901817)
-  * CVE-2018-14567
-  * CVE-2019-19956
-  * CVE-2019-20388 (Closes: #949583)
-  * CVE-2020-7595  (Closes: #949582)
+  * Non-maintainer upload.
+  * Remove the Python2 autopkg test.
 
- -- Moritz Mühlenhoff <moritz@debian.org>  Fri, 06 Nov 2020 18:35:40 +0100
+ -- Matthias Klose <doko@debian.org>  Sun, 29 Nov 2020 11:58:00 +0100
+
+libxml2 (2.9.10+dfsg-6.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix out-of-bounds read with 'xmllint --htmlout' (CVE-2020-24977)
+    (Closes: #969529)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 25 Oct 2020 13:56:23 +0100
+
+libxml2 (2.9.10+dfsg-6.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix build with Python 3.9. Closes: #972022.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 14 Oct 2020 08:45:25 +0200
+
+libxml2 (2.9.10+dfsg-6) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Mattia Rizzolo ]
+  * Drop Python2 support.  Closes: #936941
+  * Use dh-sequence-python3 to at least simplify one line of d/rules.
+  * Bump debhelper compat level to 13.
+    + Drop dh_missing override, dh13 defaults to --fail-missing.
+
+  [ Debian Janitor ]
+  * Use correct machine-readable copyright file URI.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Rely on pre-initialized dpkg-architecture variables.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 04 Sep 2020 23:05:12 +0200
+
+libxml2 (2.9.10+dfsg-5) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Mattia Rizzolo ]
+  * d/rules:
+    + Drop --disable-silent-rules, already passed by dh_auto_configure.
+    + Drop --parallel, now default with debhelper compat > 10.
+    + Use dh_installdocs and dh_installexamples to install docs and examples.
+    + Use dh_missing --fail-missing (and add the relevant d/not-installed).
+    + Minimize indep build to build only the docs.
+  * d/watch: fix an option to avoid a warning message.
+  * d/control:
+    + Move most of the build-deps to Build-Depends-Arch.
+    + Use ${python:Depends} also for python-libxml2-dbg.
+  * Add a lintian override for
+    debian-rules-uses-supported-python-versions-without-python-all-build-depends
+
+  [ Gunnar Hjalmarsson ]
+  * d/p/python3-unicode-errors.patch:
+    Fix segfault issue with itstool and py3.  LP: #1869814
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 10 Apr 2020 14:53:23 +0200
+
+libxml2 (2.9.10+dfsg-4) unstable; urgency=medium
+
+  * Team upload.
+  * Add patch from upstream to prevent a segfault in some platforms with
+    illegal documents.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Thu, 27 Feb 2020 19:21:45 +0100
+
+libxml2 (2.9.10+dfsg-3) unstable; urgency=medium
+
+  * Team upload.
+  * Add patch so that xml2-config only disaplys libraries needed for dynamic
+    linking.  Closes: #952115
+
+ -- Mattia Rizzolo <mattia@debian.org>  Sun, 23 Feb 2020 12:08:21 +0100
+
+libxml2 (2.9.10+dfsg-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix memory leak in xmlSchemaValidateStream (CVE-2019-20388)
+    (Closes: #949583)
+  * Fix infinite loop in xmlStringLenDecodeEntities (CVE-2020-7595)
+    (Closes: #949582)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 22 Feb 2020 23:36:57 +0100
+
+libxml2 (2.9.10+dfsg-2) unstable; urgency=medium
+
+  * Team upload
+  * Re-instate Python2 support for now, the rev-deps are not ready.
+    Re-opens: #936941
+  * python-libxml2-dbg: Depend on python2-dbg instead of python-dbg.
+    Closes: #948493
+  * d/control: Bump Standards-Version 4.5.0, no changes needed.
+  * Re-instnate the xml2-config script for now.
+  * Upload to unstable.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Fri, 21 Feb 2020 14:45:03 +0100
+
+libxml2 (2.9.10+dfsg-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 2.9.10+dfsg.
+    + Fix memory leak.  CVE-2019-19956
+  * Drop all patches.
+  * d/control:
+    + Bump debhelper compat level to 12.
+    + Bump Standards-Version to 4.4.1, no changes needed.
+  * d/libxml2.symbols: add Build-Depends-Package field, by lintian.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Mon, 25 Nov 2019 16:48:13 +0100
+
+libxml2 (2.9.9+dfsg1-1~exp2) experimental; urgency=medium
+
+  * Team upload.
+  * Merge the lost uploads 2.9.7+dfsg-1 and 2.9.8+dfsg-1.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 19 Nov 2019 14:53:11 +0100
+
+libxml2 (2.9.9+dfsg1-1~exp1) experimental; urgency=medium
+
+  [ Rene Engelhard ]
+  * actually remove the override_dh_gencontrol (thanks mattia)...
+
+  [ Aron Xu ]
+  * New upstream version 2.9.9+dfsg1
+    + Fix infinite loop in LZMA decompression.  CVE-2018-9251; Closes: #895195
+    + Fix (another) infinite loop in LZMA decompression.  CVE-2018-14567
+    + Fix nullptr deref with XPath logic ops.  CVE-2018-14404; Closes: #901817
+  * Remove patches merged upstream
+  * Update symbols
+  * Remove python2 support  Closes: #936941
+
+ -- Aron Xu <aron@debian.org>  Tue, 29 Oct 2019 10:08:51 +0000
+
+libxml2 (2.9.8+dfsg-1) experimental; urgency=medium
+
+  * Team upload.
+
+  [ Rene Engelhard ]
+  * New upstream version 2.9.8+dfsg.
+    + Fix possible XML External Entity attack.  CVE-2016-9318; Closes: #844581
+  * Update Vcs-* to salsa.debian.org.
+
+  [ Mattia Rizzolo ]
+  * d/libxml2.symbols:
+    + Remove removed symbols xmlNop@Base (no users found anywhere).
+    + Add two new symbols.
+  * Refresh patches.
+    + Drop the Python 3.6 compatibility patch, upstreamed.
+  * d/copyright: Update.
+  * d/control: Bump Standards-Version to 4.2.1, no changes needed.
+  * d/rules: Bump shlibs version.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 03 Oct 2018 16:45:11 +0200
+
+libxml2 (2.9.7+dfsg-1) experimental; urgency=medium
+
+  * Team upload.
+  * New upstream version 2.9.7+dfsg.  Closes: #882074
+    + Infinite recursion in parameter entities.  CVE-2017-16932; Closes: #882613
+    + Double entity expansion;  Closes: #836698
+    + Set memory limit for LZMA decompression.  CVE-2017-18258; Closes: #895245
+  * Refresh patches.
+  * Refresh symbols.
+  * Stop installing /usr/bin/xml2-config.
+    Packages should just use pkg-config instead.
+  * Remove the libxml2-dbg package, in favour of automatic debug package.
+
+ -- Mattia Rizzolo <mattia@debian.org>  Wed, 03 Jan 2018 18:15:18 +0100
+
+libxml2 (2.9.4+dfsg1-8) unstable; urgency=medium
+
+  * Team upload.
+  * Fix autopkgtest: use `python2` instead of `python` and actually run the
+    `python3` test.  Closes: #943386
+
+ -- Mattia Rizzolo <mattia@debian.org>  Tue, 19 Nov 2019 12:05:14 +0100
 
 libxml2 (2.9.4+dfsg1-7) unstable; urgency=medium
 
