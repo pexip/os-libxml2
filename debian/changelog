@@ -1,3 +1,18 @@
+libxml2 (2.9.4+dfsg1-7+deb10u4pexip1) pexip; urgency=medium
+
+  * New upstream version
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 23 May 2022 12:38:30 +0100
+
+libxml2 (2.9.4+dfsg1-7+deb10u4) buster-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix integer overflow in xmlBufferResize
+  * Fix integer overflows in xmlBuf and xmlBuffer (CVE-2022-29824)
+    (Closes: #1010526)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 May 2022 16:13:21 +0200
+
 libxml2 (2.9.4+dfsg1-7+deb10u3pexip1) pexip; urgency=medium
 
   * New upstream version
