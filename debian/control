@@ -26,7 +26,7 @@ Rules-Requires-Root: no
 Homepage: http://xmlsoft.org
 Vcs-Git: https://anonscm.debian.org/git/debian-xml-sgml/libxml2.git
 Vcs-Browser: https://anonscm.debian.org/git/debian-xml-sgml/libxml2.git
-XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
 
 Package: libxml2
 Architecture: any
