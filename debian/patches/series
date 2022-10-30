@@ -13,3 +13,5 @@ Patch-for-security-issue-CVE-2021-3541.patch
 CVE-2022-23308-Use-after-free-of-ID-and-IDREF-attrib.patch
 Fix-integer-overflow-in-xmlBufferResize.patch
 CVE-2022-29824-Fix-integer-overflows-in-xmlBuf-and-x.patch
+CVE-2022-40303-Fix-integer-overflows-with-XML_PARSE_.patch
+CVE-2022-40304-Fix-dict-corruption-caused-by-entity-.patch
