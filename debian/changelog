@@ -1,3 +1,19 @@
+libxml2 (2.9.10+dfsg-6.7+deb11u3pexip1) pexip; urgency=medium
+
+  * New upstream version with security fixes
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 07 Nov 2022 11:18:24 +0000
+
+libxml2 (2.9.10+dfsg-6.7+deb11u3) bullseye-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Fix integer overflows with XML_PARSE_HUGE (CVE-2022-40303)
+    (Closes: #1022224)
+  * Fix dict corruption caused by entity reference cycles (CVE-2022-40304)
+    (Closes: #1022225)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 30 Oct 2022 13:03:35 +0100
+
 libxml2 (2.9.10+dfsg-6.7+deb11u2pexip3) pexip-bullseye; urgency=medium
 
   * Bullseye rebuild for ARM64 inclusion
