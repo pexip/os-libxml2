@@ -15,3 +15,6 @@ Fix-integer-overflow-in-xmlBufferResize.patch
 CVE-2022-29824-Fix-integer-overflows-in-xmlBuf-and-x.patch
 CVE-2022-40303-Fix-integer-overflows-with-XML_PARSE_.patch
 CVE-2022-40304-Fix-dict-corruption-caused-by-entity-.patch
+schemas-Fix-null-pointer-deref-in-xmlSchemaCheckCOSS.patch
+CVE-2023-28484-Fix-null-deref-in-xmlSchemaFixupCompl.patch
+CVE-2023-29469-Hashing-of-empty-dict-strings-isn-t-d.patch
