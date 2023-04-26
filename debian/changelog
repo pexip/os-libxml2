@@ -1,3 +1,20 @@
+libxml2 (2.9.10+dfsg-6.7+deb11u4pexip1) pexip; urgency=medium
+
+  * New upstream version with security fixes
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Wed, 26 Apr 2023 11:22:17 +0100
+
+libxml2 (2.9.10+dfsg-6.7+deb11u4) bullseye-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * schemas: Fix null-pointer-deref in xmlSchemaCheckCOSSTDerivedOK
+  * Fix null deref in xmlSchemaFixupComplexType (CVE-2023-28484)
+    (Closes: #1034436)
+  * Hashing of empty dict strings isn't deterministic (CVE-2023-29469)
+    (Closes: #1034437)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 15 Apr 2023 20:52:15 +0200
+
 libxml2 (2.9.10+dfsg-6.7+deb11u3pexip1) pexip; urgency=medium
 
   * New upstream version with security fixes
