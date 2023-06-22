@@ -18,3 +18,4 @@ CVE-2022-40304-Fix-dict-corruption-caused-by-entity-.patch
 schemas-Fix-null-pointer-deref-in-xmlSchemaCheckCOSS.patch
 CVE-2023-28484-Fix-null-deref-in-xmlSchemaFixupCompl.patch
 CVE-2023-29469-Hashing-of-empty-dict-strings-isn-t-d.patch
+TRUE.patch
