@@ -3,11 +3,9 @@ Bug-Upstream: https://bugzilla.gnome.org/show_bug.cgi?id=789714,
               https://gitlab.gnome.org/GNOME/libxml2/issues/64
 Bug-Ubuntu: https://launchpad.net/bugs/1869814
 
-Index: libxml2-2.9.5/python/libxml.c
-===================================================================
---- libxml2-2.9.5.orig/python/libxml.c
-+++ libxml2-2.9.5/python/libxml.c
-@@ -1620,6 +1620,7 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+--- a/python/libxml.c
++++ b/python/libxml.c
+@@ -1621,6 +1621,7 @@
      PyObject *message;
      PyObject *result;
      char str[1000];
@@ -15,7 +13,7 @@ Index: libxml2-2.9.5/python/libxml.c
  
  #ifdef DEBUG_ERROR
      printf("libxml_xmlErrorFuncHandler(%p, %s, ...) called\n", ctx, msg);
-@@ -1636,12 +1637,20 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+@@ -1637,12 +1638,20 @@
  	    str[999] = 0;
          va_end(ap);
  

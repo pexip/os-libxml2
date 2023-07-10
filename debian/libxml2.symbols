@@ -42,6 +42,7 @@ libxml2.so.2 libxml2 #MINVER#
  (symver|optional)LIBXML2_2.9.0 2.9.0
  (symver|optional)LIBXML2_2.9.1 2.9.1
  (symver|optional)LIBXML2_2.9.8 2.9.8
+ (symver|optional)LIBXML2_2.9.11 2.9.11
  (optional)__libxml2_xzclose@Base 2.8.0
  (optional)__libxml2_xzcompressed@Base 2.9.3
  (optional)__libxml2_xzdopen@Base 2.8.0
@@ -89,7 +90,6 @@ libxml2.so.2 libxml2 #MINVER#
  __xmlStructuredErrorContext@Base 2.7.4
  __xmlSubstituteEntitiesDefaultValue@Base 2.6.27
  __xmlTreeIndentString@Base 2.6.27
- (symver|optional)compute_minrun@Base 2.9.0
  htmlDecodeEntities@Base 2.6.27
  libxml_domnode_binary_insertion_sort@Base 2.9.0
  libxml_domnode_tim_sort@Base 2.9.0
@@ -150,7 +150,6 @@ libxml2.so.2 libxml2 #MINVER#
  xmlInitializeDict@LIBXML2_2.8.0 2.8.0
  xmlInputReadCallbackNop@Base 2.9.8
  xmlMallocBreakpoint@Base 2.6.27
- (symver|optional)xmlNop@Base 2.9.1
  xmlNsListDumpOutput@Base 2.6.27
  xmlOutputBufferCreateFilenameDefault@LIBXML2_2.6.11 2.8.0
  xmlOutputBufferCreateFilenameValue@LIBXML2_2.6.11 2.8.0
@@ -158,6 +157,7 @@ libxml2.so.2 libxml2 #MINVER#
  xmlOutputBufferGetSize@LIBXML2_2.9.0 2.9.0
  xmlParserInputBufferCreateFilenameDefault@LIBXML2_2.6.11 2.8.0
  xmlParserInputBufferCreateFilenameValue@LIBXML2_2.6.11 2.8.0
+ xmlPopOutputCallbacks@LIBXML2_2.9.11 2.9.11
  xmlSchemaCollapseString@LIBXML2_2.6.11 2.8.0
  xmlSchemaFreeWildcard@LIBXML2_2.6.11 2.8.0
  xmlSchemaGetBuiltInListSimpleTypeItemType@LIBXML2_2.6.11 2.8.0
