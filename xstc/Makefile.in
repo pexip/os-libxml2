@@ -157,13 +157,12 @@ EXTRA_CFLAGS = @EXTRA_CFLAGS@
 FGREP = @FGREP@
 FTP_OBJ = @FTP_OBJ@
 GREP = @GREP@
-HAVE_ISINF = @HAVE_ISINF@
-HAVE_ISNAN = @HAVE_ISNAN@
 HTML_DIR = @HTML_DIR@
 HTML_OBJ = @HTML_OBJ@
 HTTP_OBJ = @HTTP_OBJ@
 ICONV_LIBS = @ICONV_LIBS@
 ICU_CFLAGS = @ICU_CFLAGS@
+ICU_DEFS = @ICU_DEFS@
 ICU_LIBS = @ICU_LIBS@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -348,6 +347,7 @@ prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
 pythondir = @pythondir@
+runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -391,9 +391,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu xstc/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign xstc/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu xstc/Makefile
+	  $(AUTOMAKE) --foreign xstc/Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -581,7 +581,7 @@ uninstall-am:
 all:
 
 #
-# Rule to load the test description and extract the informations
+# Rule to load the test description and extract the information
 #
 $(TESTDIRS) Tests/Metadata/$(NISTTESTDEF_2) Tests/Metadata/$(MSTTESTDEF) Tests/Metadata/$(SUNTESTDEF):
 	-@(if [ ! -d Tests ] ; then \
