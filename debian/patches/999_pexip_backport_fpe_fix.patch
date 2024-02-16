@@ -1,0 +1,28 @@
+commit c9925454fd384a17c8c03d358c6778a552e9287b
+Author: Sergey Kosukhin <sergey.kosukhin@mpimet.mpg.de>
+Date:   Wed Jul 6 17:08:26 2022 +0200
+
+    Use NAN/INFINITY if available to init XPath NaN/Inf
+
+diff --git a/xpath.c b/xpath.c
+index 0fa02913..f59ef41d 100644
+--- a/xpath.c
++++ b/xpath.c
+@@ -490,11 +490,17 @@ double xmlXPathNINF = 0.0;
+ ATTRIBUTE_NO_SANITIZE("float-divide-by-zero")
+ void
+ xmlXPathInit(void) {
++#if defined(NAN) && defined(INFINITY)
++    xmlXPathNAN = NAN;
++    xmlXPathPINF = INFINITY;
++    xmlXPathNINF = -INFINITY;
++#else
+     /* MSVC doesn't allow division by zero in constant expressions. */
+     double zero = 0.0;
+     xmlXPathNAN = 0.0 / zero;
+     xmlXPathPINF = 1.0 / zero;
+     xmlXPathNINF = -xmlXPathPINF;
++#endif
+ }
+ 
+ /**

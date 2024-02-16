@@ -8,3 +8,4 @@ CVE-2023-28484-Fix-null-deref-in-xmlSchemaFixupCompl.patch
 CVE-2023-29469-Hashing-of-empty-dict-strings-isn-t-d.patch
 Reset-nsNr-in-xmlCtxtReset.patch
 Also-reset-nsNr-in-htmlCtxtReset.patch
+999_pexip_backport_fpe_fix.patch
