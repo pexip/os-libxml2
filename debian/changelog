@@ -1,8 +1,67 @@
-libxml2 (2.9.14+dfsg-1.3~deb12u1) bookworm; urgency=medium
+libxml2 (2.12.7+dfsg+really2.9.14-0.4) unstable; urgency=medium
 
-  * Rebuild for bookworm
+  * Non-maintainer upload.
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 10 Jul 2023 21:58:07 +0200
+  * Don't build with ICU. Closes: #1092484.
+
+    libxml's README.md states:
+
+    [ICU](https://icu.unicode.org/), a Unicode library. Mainly
+    useful as an alternative to iconv on Windows. Unnecessary
+    on most other systems.
+
+    ICU 76.1 requires to be built with -std=c++17 or -std=gnu++17 or
+    higher.  However including the ICU headers in the libxml2 headers,
+    breaks builds with older C++ standards, most likely leading to
+    some unrelated build failures for packages that don't rely on ICU,
+    but are using libxml2.
+
+  * Import security updates from Ubuntu:
+    - SECURITY UPDATE: use-after-free in xmlXIncludeAddNode
+      + debian/patches/CVE-2022-49043.patch: fix UaF in xinclude.c.
+      + CVE-2022-49043. Closes: #1094238.
+    - SECURITY UPDATE: buffer overread in xmllint
+      + debian/patches/CVE-2024-34459.patch: fix buffer issue when using
+        htmlout option in xmllint.c.
+      + CVE-2024-34459. Closes: #1071162.
+    - SECURITY UPDATE: use-after-free
+      + debian/patches/CVE-2024-56171.patch: Fix use-after-free after
+        xmlSchemaItemListAdd.
+      + CVE-2024-56171. Closes: #1098320.
+    - SECURITY UPDATE: stack-based buffer overflow
+      + debian/patches/CVE-2025-24928-pre1.patch: Check for NULL node->name
+        in xmlSnprintfElements.
+      + debian/patches/CVE-2025-24928.patch: Fix stack-buffer-overflow in
+        xmlSnprintfElements.
+      + CVE-2025-24928. Closes: #1098321.
+    - SECURITY UPDATE: NULL pointer dereference
+      + debian/patches/CVE-2025-27113.patch: Fix compilation of explicit
+        child axis.
+      + CVE-2025-27113. Closes: #1098322.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 27 Mar 2025 11:54:17 +0100
+
+libxml2 (2.12.7+dfsg+really2.9.14-0.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * debian/control: Add python3-setuptools to Build-Depends (Closes: #1099843)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 13 Mar 2025 21:31:54 +0100
+
+libxml2 (2.12.7+dfsg+really2.9.14-0.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Patch: Python 3.13 support. (Closes: #1084096)
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 06 Nov 2024 17:11:20 -0800
+
+libxml2 (2.12.7+dfsg+really2.9.14-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Revert packaging to 2.9.14+dfsg-1.3 currently in testing to revert ABI
+    breakage (Closes: #1073508)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 26 Sep 2024 17:15:36 +0200
 
 libxml2 (2.9.14+dfsg-1.3) unstable; urgency=medium
 
