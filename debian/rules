@@ -12,6 +12,7 @@ endif
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 export DEB_CFLAGS_MAINT_APPEND = -Wall -O3
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--no-as-needed
 
 include /usr/share/dpkg/architecture.mk
 
@@ -28,7 +29,7 @@ doconfigure-%:
 	dh_auto_configure --builddirectory=builddir/$(*) -- $(CONFIGURE_FLAGS)
 	touch $@
 
-doconfigure-main: CONFIGURE_FLAGS += --without-python --with-icu
+doconfigure-main: CONFIGURE_FLAGS += --without-python
 doconfigure-python%: CONFIGURE_FLAGS += --with-python=/usr/bin/$(*) --with-python-install-dir=/usr/lib/$(*)/dist-packages
 
 dobuild-%: BUILD_DIR=builddir/$(*)
