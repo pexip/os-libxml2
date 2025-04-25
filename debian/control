@@ -30,7 +30,7 @@ Description: GNOME XML library
  own customized markup languages for many classes of document. It
  can do this because it's written in SGML, the international standard
  metalanguage for markup languages.
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
+XS-Pexip-Upstream: http://deb.debian.org/debian/ trixie
 
 Package: libxml2
 Architecture: any
