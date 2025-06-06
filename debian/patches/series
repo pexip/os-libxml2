@@ -8,3 +8,15 @@ CVE-2023-28484-Fix-null-deref-in-xmlSchemaFixupCompl.patch
 CVE-2023-29469-Hashing-of-empty-dict-strings-isn-t-d.patch
 Reset-nsNr-in-xmlCtxtReset.patch
 Also-reset-nsNr-in-htmlCtxtReset.patch
+CVE-2022-49043.patch
+CVE-2024-34459.patch
+CVE-2024-56171.patch
+CVE-2025-24928-pre1.patch
+CVE-2025-24928.patch
+CVE-2025-27113.patch
+CVE-2023-39615_1.patch
+CVE-2023-39615_2.patch
+CVE-2023-45322.patch
+CVE-2024-25062.patch
+CVE-2025-32414-bug-889-v2.10.4-and-below.patch
+CVE-2025-32415.patch
