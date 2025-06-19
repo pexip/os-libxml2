@@ -10,3 +10,4 @@ Reset-nsNr-in-xmlCtxtReset.patch
 Also-reset-nsNr-in-htmlCtxtReset.patch
 999_pexip_backport_fpe_fix.patch
 CVE-2022-49043-Fix-user-after-free-xmlXIncludeAddNode.patch
+CVE-2024-56171-Fix-use-after-free-after-xmlSchemaIte.patch
