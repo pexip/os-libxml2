@@ -1,3 +1,11 @@
+libxml2 (2.9.14+dfsg-1.3~deb12u1+pexip24u5) pexip; urgency=medium
+
+  * Backport CVE fixes from upstream:
+    + malloc-fail: Fix use-after-free in xmlXIncludeAddNode
+      (CVE-2022-49043)
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Thu, 19 Jun 2025 11:39:12 +0100
+
 libxml2 (2.9.14+dfsg-1.3~deb12u1+pexip24u4) pexip; urgency=medium
 
   * Apply c9925454fd384a17c8c03d358c6778a552e9287b from upstream to fix
