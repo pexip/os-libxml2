@@ -4,6 +4,7 @@ libxml2 (2.9.14+dfsg-1.3~deb12u1+pexip24u5) pexip; urgency=medium
     + malloc-fail: Fix use-after-free in xmlXIncludeAddNode
       (CVE-2022-49043)
     + Fix use-after-free after xmlSchemaItemListAdd (CVE-2024-56171)
+    + Fix stack-buffer-overflow in xmlSnprintfElements (CVE-2025-24928)
 
  -- Steve McIntyre <steve.mcintyre@pexip.com>  Thu, 19 Jun 2025 11:39:12 +0100
 
