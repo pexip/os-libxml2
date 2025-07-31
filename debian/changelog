@@ -1,3 +1,38 @@
+libxml2 (2.12.7+dfsg+really2.9.14-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix CVE-2025-6170: Potential buffer overflows in the interactive shell
+    (Closes: #1107938).
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sun, 27 Jul 2025 00:59:51 +0200
+
+libxml2 (2.12.7+dfsg+really2.9.14-2) unstable; urgency=medium
+
+  * Security fixes:
+    - CVE-2025-6021: integer overflow in xmlBuildQName()
+      (Closes: #1107720)
+    - CVE-2025-{49794,49796}: use after free and type confusion in
+      xmlSchematronReportOutput() (Closes: #1107755)
+
+ -- Aron Xu <aron@debian.org>  Thu, 17 Jul 2025 17:09:57 +0200
+
+libxml2 (2.12.7+dfsg+really2.9.14-1) unstable; urgency=medium
+
+  * Acknowledge previous NMUs.
+  * Security fixes:
+    - CVE-2023-39615: out-of-bounds read via the xmlSAX2StartElement()
+      (Closes: #1051230)
+    - CVE-2023-45322: use-after-free in xmlUnlinkNode()
+      (Closes: #1053629)
+    - CVE-2024-25062: use-after-free in xmlValidatePopElement()
+      (Closes: #1063234)
+    - CVE-2025-32414: out-of-bounds read in Python bindings
+      (Closes: #1102521)
+    - CVE-2025-32415: heap-based buffer under-read via
+      xmlSchemaIDCFillNodeTables() (Closes: #1103511)
+
+ -- Aron Xu <aron@debian.org>  Thu, 15 May 2025 15:34:25 +0800
+
 libxml2 (2.12.7+dfsg+really2.9.14-0.4+pexip25u1) pexip-trixie; urgency=medium
 
   * Initial trixie build
