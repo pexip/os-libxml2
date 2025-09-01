@@ -1,3 +1,30 @@
+libxml2 (2.9.14+dfsg-1.3+pexip24u6~deb12u4) pexip; urgency=medium
+
+  * New upstream release with security fixes
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 01 Sep 2025 11:54:20 +0100
+
+libxml2 (2.9.14+dfsg-1.3~deb12u4) bookworm-security; urgency=high
+
+  * CVE-2025-7425: heap-use-after-free in xmlFreeID caused by `atype`
+    corruption (Closes: #1109122)
+
+ -- Aron Xu <aron@debian.org>  Mon, 25 Aug 2025 19:30:10 +0800
+
+libxml2 (2.9.14+dfsg-1.3~deb12u3) bookworm; urgency=high
+
+  * Non-maintainer upload.
+  * Fix CVE-2025-6021: Integer overflow issue in xmlBuildQName. (Closes:
+    #1107720).
+  * Fix CVE-2025-6170: Potential buffer overflows in the interactive shell
+    (Closes: #1107938).
+  * Fix CVE-2025-49794: Use-after-free issue in xmlSchematronReportOutput
+    (Closes: #1107755).
+  * Fix CVE-2025-49796: Type confusion issue in xmlSchematronReportOutput
+    (Closes: #1107752).
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sun, 27 Jul 2025 01:15:48 +0200
+
 libxml2 (2.9.14+dfsg-1.3+pexip24u5~deb12u2) pexip; urgency=medium
 
   * New upstream release
