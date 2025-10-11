@@ -1,3 +1,12 @@
+libxml2 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) trixie; urgency=high
+
+  * Non-maintainer upload.
+  * Fix CVE-2025-9714: Denial of service vulnerability via uncontrolled
+    recursion in XPath evaluation.
+  * Amend d/p/CVE-2025-7425.patch to better reflect the original fix.
+
+ -- Guilhem Moulin <guilhem@debian.org>  Sat, 11 Oct 2025 14:55:59 +0200
+
 libxml2 (2.12.7+dfsg+really2.9.14-2.1+deb13u1) trixie-security; urgency=high
 
   * CVE-2025-7425: heap-use-after-free in xmlFreeID caused by `atype`
