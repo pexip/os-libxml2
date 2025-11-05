@@ -24,4 +24,5 @@ CVE-2025-32415.patch
 CVE-2025-6021.patch
 CVE-2025-49794_49796.patch
 CVE-2025-6170.patch
+CVE-2025-7425.patch
 999_pexip_backport_fpe_fix.patch
