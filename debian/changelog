@@ -1,14 +1,8 @@
-libxml2 (2.12.7+dfsg+really2.9.14-2.1+pexip25u1+pexip25u1) pexip-trixie; urgency=medium
+libxml2 (2.12.7+dfsg+really2.9.14-2.1+deb13u1+pexip25u1) pexip-trixie; urgency=medium
 
   * New upstream release
 
  -- Mark Hymers <mark.hymers@pexip.com>  Wed, 05 Nov 2025 11:02:54 +0000
-
-libxml2 (2.12.7+dfsg+really2.9.14-2.1+pexip25u1) pexip-trixie; urgency=medium
-
-  * New upstream release
-
- -- Mark Hymers <mark.hymers@pexip.com>  Thu, 31 Jul 2025 13:27:52 +0100
 
 libxml2 (2.12.7+dfsg+really2.9.14-2.1+deb13u1) trixie-security; urgency=high
 
@@ -16,6 +10,12 @@ libxml2 (2.12.7+dfsg+really2.9.14-2.1+deb13u1) trixie-security; urgency=high
     corruption (Closes: #1109122)
 
  -- Aron Xu <aron@debian.org>  Mon, 25 Aug 2025 19:38:04 +0800
+
+libxml2 (2.12.7+dfsg+really2.9.14-2.1+pexip25u1) pexip-trixie; urgency=medium
+
+  * New upstream release
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Thu, 31 Jul 2025 13:27:52 +0100
 
 libxml2 (2.12.7+dfsg+really2.9.14-2.1) unstable; urgency=medium
 
