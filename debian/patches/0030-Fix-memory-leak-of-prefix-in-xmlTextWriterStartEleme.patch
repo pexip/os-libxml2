@@ -1,0 +1,21 @@
+From: Niels Dossche <7771979+nielsdos@users.noreply.github.com>
+Date: Thu, 4 Sep 2025 21:13:24 +0200
+Subject: Fix memory leak of prefix in xmlTextWriterStartElementNS()
+
+Origin: https://gitlab.gnome.org/GNOME/libxml2/-/commit/7d138310f1d4f006d490e29c72168c8ede3a020a
+---
+ xmlwriter.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/xmlwriter.c b/xmlwriter.c
+index 58445c8..49b3012 100644
+--- a/xmlwriter.c
++++ b/xmlwriter.c
+@@ -1095,6 +1095,7 @@ xmlTextWriterStartElementNS(xmlTextWriterPtr writer,
+         if (p->uri == 0) {
+             xmlWriterErrMsg(writer, XML_ERR_NO_MEMORY,
+                             "xmlTextWriterStartElementNS : out of memory!\n");
++            xmlFree(p->prefix);
+             xmlFree(p);
+             return -1;
+         }

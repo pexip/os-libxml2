@@ -1,0 +1,22 @@
+From: Jayakrishna Menon <jkrshnmenon@gmail.com>
+Date: Tue, 10 Feb 2026 14:24:15 -0700
+Subject: use duplicating variant in relaxng to mitigate UAF
+
+Origin: https://gitlab.gnome.org/GNOME/libxml2/-/commit/df2ba65f661addfba50bdb7f280d594781249dfc
+---
+ relaxng.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/relaxng.c b/relaxng.c
+index 3c6643e..42effaf 100644
+--- a/relaxng.c
++++ b/relaxng.c
+@@ -8963,7 +8963,7 @@ xmlRelaxNGValidateValue(xmlRelaxNGValidCtxtPtr ctxt,
+ 
+                 if ((ret == 0) && (ctxt->state->value != NULL) &&
+                     (ctxt->state->value != ctxt->state->endvalue)) {
+-                    VALID_ERR2(XML_RELAXNG_ERR_LISTEXTRA,
++                    VALID_ERR2P(XML_RELAXNG_ERR_LISTEXTRA,
+                                ctxt->state->value);
+                     ret = -1;
+                 }

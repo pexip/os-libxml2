@@ -26,3 +26,15 @@ CVE-2025-49794_49796.patch
 CVE-2025-6170.patch
 CVE-2025-7425.patch
 CVE-2025-9714.patch
+CVE-2026-1757.patch
+0030-Fix-memory-leak-of-prefix-in-xmlTextWriterStartEleme.patch
+CVE-2025-8732.patch
+CVE-2026-0990.patch
+CVE-2026-0992/01-4af23b523.patch
+CVE-2026-0992/02-096402c94.patch
+0035-testcatalog-Add-new-tests-for-catalog.c.patch
+CVE-2026-0989.patch
+0037-use-duplicating-variant-in-relaxng-to-mitigate-UAF.patch
+0038-fix-memory-leak-in-issue-1054.patch
+0039-schematron-fix-additional-memory-leaks-on-error-path.patch
+0040-catalog-fix-stack-overflow-from-self-referencing-SGM.patch
