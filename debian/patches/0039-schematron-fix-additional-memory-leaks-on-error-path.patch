@@ -1,0 +1,51 @@
+From: ylwango613 <1217816127@qq.com>
+Date: Tue, 24 Feb 2026 18:23:50 +0800
+Subject: schematron: fix additional memory leaks on error paths
+
+In xmlSchematronParseRule, free report when xmlSchematronAddTest fails
+in the assert and report blocks.
+
+In xmlSchematronAddTest, free the compiled XPath expression when
+xmlMalloc fails.
+
+Origin: https://gitlab.gnome.org/GNOME/libxml2/-/commit/99bf8af1bb9654dd6746c73456ce17412fe442f3
+---
+ schematron.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/schematron.c b/schematron.c
+index d90f367..944fc3c 100644
+--- a/schematron.c
++++ b/schematron.c
+@@ -331,6 +331,7 @@ xmlSchematronAddTest(xmlSchematronParserCtxtPtr ctxt,
+     ret = (xmlSchematronTestPtr) xmlMalloc(sizeof(xmlSchematronTest));
+     if (ret == NULL) {
+         xmlSchematronPErrMemory(ctxt, "allocating schema test", node);
++        xmlXPathFreeCompExpr(comp);
+         return (NULL);
+     }
+     memset(ret, 0, sizeof(xmlSchematronTest));
+@@ -906,8 +907,10 @@ xmlSchematronParseRule(xmlSchematronParserCtxtPtr ctxt,
+ 
+ 		testptr = xmlSchematronAddTest(ctxt, XML_SCHEMATRON_ASSERT,
+ 		                               ruleptr, cur, test, report);
+-		if (testptr == NULL)
++		if (testptr == NULL) {
+ 		    xmlFree(test);
++		    xmlFree(report);
++		}
+ 	    }
+ 	} else if (IS_SCHEMATRON(cur, "report")) {
+ 	    nbChecks++;
+@@ -929,8 +932,10 @@ xmlSchematronParseRule(xmlSchematronParserCtxtPtr ctxt,
+ 
+ 		testptr = xmlSchematronAddTest(ctxt, XML_SCHEMATRON_REPORT,
+ 		                               ruleptr, cur, test, report);
+-		if (testptr == NULL)
++		if (testptr == NULL) {
+ 		    xmlFree(test);
++		    xmlFree(report);
++		}
+ 	    }
+ 	} else {
+ 	    xmlSchematronPErr(ctxt, cur,

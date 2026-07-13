@@ -1,0 +1,44 @@
+From: Yun <emptyiscolor@gmail.com>
+Date: Wed, 11 Feb 2026 22:32:12 +0000
+Subject: fix memory leak in issue 1054
+
+Origin: https://gitlab.gnome.org/GNOME/libxml2/-/commit/8d77ac83082288e6b11259266e0ce56095ecdd69
+Bug: https://gitlab.gnome.org/GNOME/libxml2/-/work_items/1054
+---
+ xmlwriter.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/xmlwriter.c b/xmlwriter.c
+index 49b3012..6d52aa2 100644
+--- a/xmlwriter.c
++++ b/xmlwriter.c
+@@ -1872,6 +1872,7 @@ xmlTextWriterStartAttributeNS(xmlTextWriterPtr writer,
+             if (p == 0) {
+                 xmlWriterErrMsg(writer, XML_ERR_NO_MEMORY,
+ 								        "xmlTextWriterStartAttributeNS : out of memory!\n");
++                xmlFree(buf);
+                 return -1;
+             }
+ 
+@@ -1880,12 +1881,20 @@ xmlTextWriterStartAttributeNS(xmlTextWriterPtr writer,
+             if (p->uri == 0) {
+                 xmlWriterErrMsg(writer, XML_ERR_NO_MEMORY,
+                         "xmlTextWriterStartAttributeNS : out of memory!\n");
++                xmlFree(p->prefix);
+                 xmlFree(p);
+                 return -1;
+             }
+             p->elem = xmlListFront(writer->nodes);
+ 
+-            xmlListPushFront(writer->nsstack, p);
++            if (xmlListPushFront(writer->nsstack, p) == 0) {
++                xmlWriterErrMsg(writer, XML_ERR_NO_MEMORY,
++                        "xmlTextWriterStartAttributeNS : out of memory!\n");
++                xmlFree(p->uri);
++                xmlFree(p->prefix);
++                xmlFree(p);
++                return -1;
++            }
+         }
+     }
+ 

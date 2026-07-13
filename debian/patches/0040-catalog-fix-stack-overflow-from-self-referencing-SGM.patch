@@ -1,0 +1,45 @@
+From: ylwango613 <1217816127@qq.com>
+Date: Tue, 24 Feb 2026 20:19:43 +0800
+Subject: catalog: fix stack overflow from self-referencing SGML CATALOG
+ entries
+
+An SGML catalog file with multiple CATALOG directives referencing itself
+causes exponential recursion in xmlParseSGMLCatalog(), leading to stack
+overflow. With K self-referencing entries and MAX_CATAL_DEPTH=50, total
+recursive parses = K^50.
+
+Add deduplication by registering expanded filenames in the catalog hash
+table before calling xmlExpandCatalog(), consistent with the existing
+super branch.
+
+Origin: https://gitlab.gnome.org/GNOME/libxml2/-/commit/4982ee83f91ed598de793b280c8990646726c440
+Bug: https://gitlab.gnome.org/GNOME/libxml2/-/work_items/1064
+---
+ catalog.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/catalog.c b/catalog.c
+index df97a67..6559a89 100644
+--- a/catalog.c
++++ b/catalog.c
+@@ -2559,10 +2559,19 @@ xmlParseSGMLCatalog(xmlCatalogPtr catal, const xmlChar *value,
+ 		    }
+ 		} else {
+ 		    xmlChar *filename;
++		    xmlCatalogEntryPtr entry;
+ 
+ 		    filename = xmlBuildURI(sysid, base);
+ 		    if (filename != NULL) {
+-			xmlExpandCatalog(catal, (const char *)filename, depth);
++			entry = xmlNewCatalogEntry(type, sysid, NULL, NULL,
++				                   XML_CATA_PREFER_NONE, NULL);
++			res = xmlHashAddEntry(catal->sgml, filename, entry);
++			if (res < 0) {
++			    xmlFreeCatalogEntry(entry, NULL);
++			} else {
++			    xmlExpandCatalog(catal,
++					    (const char *)filename, depth);
++			}
+ 			xmlFree(filename);
+ 		    }
+ 		}
